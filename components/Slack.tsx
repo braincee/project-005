@@ -27,7 +27,7 @@ import {
 const Slack = () => {
   return (
     <Box>
-      <Sheet sx={{ minHeight: '100vh' }}>
+      <Sheet sx={{ minHeight: '100vh', bgcolor: '#350d36' }}>
         <Stack
           sx={{
             bgcolor: '#350d36',
@@ -131,9 +131,7 @@ const Slack = () => {
             >
               <ListItem>
                 <ListItemDecorator>
-                  <span className='h-[36px] w-[36px] border-2 text-white'>
-                    Icon
-                  </span>
+                  <span className='h-[36px] w-[36px] border-2 text-white'></span>
                 </ListItemDecorator>
               </ListItem>
               <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -146,17 +144,13 @@ const Slack = () => {
               </ListItem>
               <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
                 <ListItemDecorator>
-                  <span className='h-[36px] w-[36px] border-2 text-white'>
-                    Icon
-                  </span>
+                  <span className='h-[36px] w-[36px] border-2 text-white'></span>
                 </ListItemDecorator>
                 <ListItemContent sx={{ color: '#fff' }}>DMs</ListItemContent>
               </ListItem>
               <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
                 <ListItemDecorator>
-                  <span className='h-[36px] w-[36px] border-2 text-white'>
-                    Icon
-                  </span>
+                  <span className='h-[36px] w-[36px] border-2 text-white'></span>
                 </ListItemDecorator>
                 <ListItemContent sx={{ color: '#fff' }}>
                   Activity
@@ -181,16 +175,14 @@ const Slack = () => {
             >
               <ListItem>
                 <ListItemDecorator>
-                  <AddCircleOutline
+                  <AddCircle
                     sx={{ width: '36px', height: '36px', color: '#ffff' }}
                   />
                 </ListItemDecorator>
               </ListItem>
               <ListItem>
                 <ListItemDecorator>
-                  <span className='h-[36px] w-[36px] border-2 text-white'>
-                    Icon
-                  </span>
+                  <span className='h-[36px] w-[36px] border-2 text-white'></span>
                 </ListItemDecorator>
               </ListItem>
             </List>
@@ -216,30 +208,50 @@ const Slack = () => {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   fontSize: '18px',
-                  fontWeight: 900,
                   p: '0 8px 0 12px',
                   gap: 4,
                   minHeight: '49px',
                   borderBottom: '1px solid #49254a',
                 }}
               >
-                <Typography sx={{ color: '#ffff' }}>Channel Name</Typography>
-                <List sx={{ display: 'flex', flexDirection: 'row' }}>
-                  <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: '18px',
+                    color: '#ffff',
+                    maxWidth: '100%',
+                    fontWeight: 900,
+                  }}
+                >
+                  Name
+                </Typography>
+                <List
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    marginLeft: 'auto',
+                    gap: 2,
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  <ListItem
+                    sx={{
+                      height: '36px',
+                      width: '36px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
                     <ListItemButton>
                       <ListItemDecorator>
-                        <span className='h-[36px] w-[36px] border-2 text-white'>
-                          Icon
-                        </span>
+                        <span className='h-[18px] w-[18px] border-2 text-white'></span>
                       </ListItemDecorator>
                     </ListItemButton>
                   </ListItem>
-                  <ListItem>
+                  <ListItem sx={{ height: '36px', width: '36px' }}>
                     <ListItemButton>
                       <ListItemDecorator>
-                        <span className='h-[36px] w-[36px] border-2 text-white'>
-                          Icon
-                        </span>
+                        <span className='h-[18px] w-[18px] border-2 text-white'></span>
                       </ListItemDecorator>
                     </ListItemButton>
                   </ListItem>
@@ -330,6 +342,7 @@ const Slack = () => {
                 </List>
               </Stack>
             </Stack>
+            <Stack sx={{ bgcolor: '#ffff' }}></Stack>
           </Stack>
         </Stack>
       </Sheet>
