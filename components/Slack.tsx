@@ -1,6 +1,5 @@
 import {
   AddCircle,
-  AddCircleOutline,
   ArrowBack,
   ArrowForward,
   ArrowRight,
