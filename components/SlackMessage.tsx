@@ -1,13 +1,20 @@
 import { ArrowDropDown, Close } from '@mui/icons-material'
 import { Box, Button, IconButton, Sheet, Stack } from '@mui/joy'
+import Image from 'next/image'
 import Link from 'next/link'
+import MessageImage from '@/public/drizzle-image.jpeg'
 
 const SlackMessage = () => {
   return (
-    <Box sx={{ bgcolor: '#ffff', border: '1px solid black' }}>
+    <Box sx={{ bgcolor: '#ffff', border: '1px solid black', py: '20px' }}>
       <Sheet>
         <Stack
-          sx={{ padding: '8px 20px', display: 'flex', flexDirection: 'row' }}
+          sx={{
+            padding: '8px 20px',
+            display: 'flex',
+            flexDirection: 'row',
+            bgcolor: '#f8f8f8',
+          }}
         >
           <Stack sx={{ display: 'flex', flexShrink: 0, marginRight: '8px' }}>
             <span>
@@ -122,6 +129,20 @@ const SlackMessage = () => {
                     <ArrowDropDown sx={{ color: '#0b6bcb' }} />
                   </IconButton>
                 </span>
+                <Stack
+                  sx={{
+                    width: '360px',
+                    position: 'relative',
+                    maxWidth: '100%',
+                    marginTop: '5px',
+                  }}
+                >
+                  <div className='pt-[75%] relative'>
+                    <div className='h-[100%] left-0 top-0 absolute'>
+                      <Image src={MessageImage} alt='Message Video' />
+                    </div>
+                  </div>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
