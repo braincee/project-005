@@ -1,11 +1,11 @@
-import Slack from '@/components/Slack'
-import { Box, Typography } from '@mui/joy'
+import SlackMessage from '@/components/SlackMessage'
+import { Box } from '@mui/joy'
 
 export default function Home() {
   return (
     <main>
       <Box>
-        <Slack />
+        <SlackMessage />
       </Box>
     </main>
   )
