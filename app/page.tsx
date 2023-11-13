@@ -1,18 +1,20 @@
-import SlackMessage from '@/components/SlackMessage'
-import TelegramMessage from '@/components/TelegramMessage'
+import Discord from '@/components/Discord'
+import Slack from '@/components/Slack'
+import Telegram from '@/components/Telegram'
+import ModeToggle from '@/libs/ModeToggle'
 import { Box } from '@mui/joy'
-import DiscordMessage from '@/components/DiscordMessage'
-import ModeToggle from '@/components/ModeToggle'
 
 export default function Home() {
-  return (
-    <main>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-        <ModeToggle />
-        <SlackMessage />
-        <TelegramMessage />
-        <DiscordMessage />
-      </Box>
-    </main>
-  )
+    return (
+        <main>
+            <ModeToggle />
+            <Box
+                sx={{ display: 'flex', flexDirection: 'column', gap: 5, backgroundColor: 'green' }}
+            >
+                <Slack />
+                <Telegram />
+                <Discord />
+            </Box>
+        </main>
+    )
 }
