@@ -99,7 +99,10 @@ const TelegramMessage = () => {
               >
                 <Stack
                   sx={{
-                    height: '211px',
+                    height: {
+                      xs: '107px',
+                      sm: '211px',
+                    },
                     borderBottomLeftRadius: 0,
                     borderBottomRightRadius: 0,
                     borderTopRightRadius: '6px',
@@ -117,7 +120,7 @@ const TelegramMessage = () => {
                     src={TelegramImage}
                     alt='Message Image'
                   />
-                  <canvas className='h-full w-full block object-cover opacity-0 top-o left-0 absolute'></canvas>
+                  <canvas className='h-full w-full block object-cover opacity-0 top-o left-0 absolute aspect-[auto_40/19]'></canvas>
                 </Stack>
                 <Stack
                   sx={{
