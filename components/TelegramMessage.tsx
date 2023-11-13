@@ -1,6 +1,7 @@
 import { Box, Sheet, Stack } from '@mui/joy'
 import Image from 'next/image'
 import TelegramImage from '@/public/Telegram.jpeg'
+import { ForwardOutlined } from '@mui/icons-material'
 
 const TelegramMessage = () => {
   return (
@@ -18,6 +19,7 @@ const TelegramMessage = () => {
         flex: 1,
         lineHeight: 1.5,
         border: '1px solid black',
+        fontFamily: 'Roboto san-serif',
       }}
     >
       <Sheet
@@ -72,6 +74,7 @@ const TelegramMessage = () => {
                   color: '#a695e7',
                 }}
               >
+                <ForwardOutlined color='primary' />
                 <span className='flex items-center'>Chris</span>
               </Stack>
               <Stack
@@ -109,7 +112,12 @@ const TelegramMessage = () => {
                     overflow: 'hidden',
                   }}
                 >
-                  <Image className='' src={TelegramImage} alt='Message Image' />
+                  <Image
+                    className='h-full w-full block object-cover'
+                    src={TelegramImage}
+                    alt='Message Image'
+                  />
+                  <canvas className='h-full w-full block object-cover opacity-0 top-o left-0 absolute'></canvas>
                 </Stack>
                 <Stack
                   sx={{
@@ -119,6 +127,7 @@ const TelegramMessage = () => {
                     borderRadius: '4px',
                     lineHeight: 1.3125,
                     color: '#000000',
+                    fontFamily: 'Roboto',
                   }}
                 >
                   <p className='mb-[30px] p-0 m-0'>MANAGE</p>
