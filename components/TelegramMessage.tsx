@@ -32,6 +32,7 @@ const TelegramMessage = () => {
           minHeight: '100%',
           margin: '0 auto',
           display: 'flex',
+          flexDirection: 'column',
           padding: '16px 16px 0 18px',
           justifyContent: 'flex-end',
           pointerEvents: 'auto',
