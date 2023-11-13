@@ -1,8 +1,7 @@
-import { ArrowDropDown, Close } from '@mui/icons-material'
-import { Box, Button, IconButton, Sheet, Stack, Avatar } from '@mui/joy'
+import { Box, Button, Typography, Sheet, Stack, Avatar } from '@mui/joy'
 import Image from 'next/image'
 import Link from 'next/link'
-import MessageImage from '@/public/drizzle-image.jpeg'
+import MessageImage from '@/public/typescriptfeature.png'
 
 const SlackMessage = () => {
   return (
@@ -15,11 +14,7 @@ const SlackMessage = () => {
             flexDirection: 'row',
           }}
         >
-          <Stack sx={{ display: 'flex', flexShrink: 0, marginRight: '8px' }}>
-            <span>
-              <Avatar />
-            </span>
-          </Stack>
+          <Avatar />
           <Stack
             sx={{
               flex: '1 1 0',
@@ -37,7 +32,7 @@ const SlackMessage = () => {
                 alignItems: 'center',
               }}
             >
-              <Button
+              <Typography
                 sx={{
                   padding: 0,
                   margin: 0,
@@ -50,10 +45,10 @@ const SlackMessage = () => {
                   minHeight: 0,
                 }}
               >
-                Username
-              </Button>
+                Typescript Community #Updates
+              </Typography>
 
-              <span className='text-[12px]'>5:00 PM</span>
+              <span className='text-[12px]'>09/24/2022 6:45 PM</span>
             </Stack>
             <Stack
               sx={{
@@ -61,8 +56,8 @@ const SlackMessage = () => {
                 width: '100%',
               }}
             >
-              <Link href='https://youtu.be/d7XJjQesDtE?si=9e_h2Tu_EEFZGBUu'>
-                https://youtu.be/d7XJjQesDtE?si=9e_h2Tu_EEFZGBUu
+              <Link href='https://devblogs.microsoft.com/typescript/announcing-typescript-5-2/'>
+              https://devblogs.microsoft.com/typescript/announcing-typescript-5-2/
               </Link>
             </Stack>
             <Stack
@@ -77,17 +72,6 @@ const SlackMessage = () => {
               }}
             >
               <span className='top-0 bottom-0 left-[-20px] absolute w-[20px]'>
-                <IconButton
-                  sx={{
-                    p: 0,
-                    m: 0,
-                    minWidth: 'fit-content',
-                    minHeight: 'fit-content',
-                  }}
-                  variant='plain'
-                >
-                  <Close sx={{ width: '20px' }} />
-                </IconButton>
               </span>
               <span className='rounded-lg w-[4px] shrink-0 bg-[#dddddd]'></span>
               <Stack
@@ -98,30 +82,25 @@ const SlackMessage = () => {
                   width: '100%',
                 }}
               >
-                <div className='flex gap-2 text-[15px] leading-[1.46668]'>
-                  <span className='flex items-cente'>
-                    <span className='bg-[#f2606a] w-[16px] h-[16px] rounded-sm me-[8px] mb-[3px] border-1 border-[#0000]'></span>
-                    <span className='font-black '>YouTube</span>
+                <div className='gap-2 text-[15px] leading-[1.46668]'>
+                  <span className='flex items-center'>
+                    <span className='font-black mb-4'>Typescript</span>
                   </span>
-                  <span className='w-[2px] h-full bg-[#dddddd]'></span>
-                  <span>Dave Gray</span>
+                  <span>Daniel Rossenwasser</span>
                 </div>
-                <span className='font-bold text-[15px] leading-[1.46668]'>
+                <span className='font-bold text-[15px] leading-[1.46668] mt-4'>
                   <Link href='#'>
-                    Build a Random Quote Machine with Nextjs, PlanetScale MySQL,
-                    & Drizzle ORM
+                   Announcing Typescript 5.2 - Typescript
                   </Link>
-                  <IconButton
-                    sx={{
-                      p: 0,
-                      m: 0,
-                      minWidth: 'fit-content',
-                      minHeight: 'fit-content',
-                      display: 'inline-block',
-                    }}
-                  >
-                    <ArrowDropDown sx={{ color: '#0b6bcb' }} />
-                  </IconButton>
+                </span>
+                <span className="mt-4 md:max-w-[65%]">
+                    <p>
+                    Today we’re excited to announce the release of TypeScript 5.2! If you’re not familiar 
+                with TypeScript, it’s a language that builds on top of JavaScript by making it possible 
+                to declare and describe types. Writing types in our code allows us to explain intent and
+                 have other tools check our code to catch mistakes like typos,
+                    </p>
+
                 </span>
                 <Stack
                   sx={{
