@@ -1,10 +1,10 @@
-import { Box, Stack } from '@mui/joy'
+import { Box, Sheet, Stack } from '@mui/joy'
 import Image from 'next/image'
 import SvgIcon from '@/public/icon.svg'
 
 const Telegram = () => {
   return (
-    <Box
+    <Sheet
       sx={{
         transform: 'none',
         borderBottomLeftRadius: '6px',
@@ -124,7 +124,7 @@ const Telegram = () => {
           </span>
         </Stack>
       </Stack>
-    </Box>
+    </Sheet>
   )
 }
 

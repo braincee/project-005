@@ -1,10 +1,15 @@
+'use client'
+
 import Discord from '@/components/Discord'
 import Slack from '@/components/Slack'
 import Telegram from '@/components/Telegram'
 import ModeToggle from '@/libs/ModeToggle'
-import { Box, Sheet } from '@mui/joy'
+import { Box, Sheet, useTheme } from '@mui/joy'
 
 export default function Home() {
+  const theme = useTheme()
+  const textColor = theme.palette.mode === 'dark' ? '#FFFFFF' : '#000000'
+
   return (
     <main>
       <ModeToggle />
@@ -16,8 +21,13 @@ export default function Home() {
           backgroundColor: 'green',
         }}
       >
-        <Box sx={{ py: '20px' }}>
-          <Slack />
+        <Box
+          sx={{
+            py: '20px',
+            bgcolor: textColor === '#FFFFFF' ? '#000' : '#fff',
+          }}
+        >
+          <Slack textColor={textColor} />
         </Box>
         <Box
           sx={{

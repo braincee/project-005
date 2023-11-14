@@ -1,7 +1,7 @@
 import { Person } from '@mui/icons-material'
 import { Box, Button, Stack } from '@mui/joy'
 
-const Slack = () => {
+const Slack = ({ textColor }, { textColor: string }) => {
   return (
     <Box
       sx={{
@@ -26,10 +26,10 @@ const Slack = () => {
               width: '36px',
               height: '36px',
               borderRadius: '4px',
-              backgroundColor: '#1d1c1d21',
+              backgroundColor: textColor === '#FFFFFF' ? 'white' : '#1d1c1d21',
             }}
           >
-            <Person sx={{ color: 'black' }} />
+            <Person sx={{ color: textColor === '#FFFFFF' ? '' : 'black' }} />
           </span>
         </span>
       </Stack>
@@ -62,13 +62,20 @@ const Slack = () => {
               alignItems: 'flex-start',
               height: 'fit-content',
               minHeight: 0,
-              color: '#1d1c1d',
+              color: textColor === '#FFFFFF' ? '#fff' : '#1d1c1d',
             }}
           >
             username
           </Button>
 
-          <span style={{ fontSize: '12px', color: '#616061' }}>5:00 PM</span>
+          <span
+            style={{
+              fontSize: '12px',
+              color: textColor === '#FFFFFF' ? '#fff' : '#616061',
+            }}
+          >
+            5:00 PM
+          </span>
         </Stack>
         <Stack
           sx={{
