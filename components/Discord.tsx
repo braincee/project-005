@@ -1,6 +1,15 @@
 'use client'
 
-import { Avatar, Box, Sheet, Stack, Typography, List, ListItem } from '@mui/joy'
+import {
+  Avatar,
+  Box,
+  Sheet,
+  Stack,
+  Typography,
+  List,
+  ListItem,
+} from '@mui/joy'
+
 import localFont from 'next/font/local'
 
 const helvetica = localFont({
@@ -8,7 +17,9 @@ const helvetica = localFont({
   display: 'swap',
 })
 
-const Discord = () => {
+const Discord = (props: { textColor: string }) => {
+    const { textColor } = props
+
   return (
     <Box sx={{ backgroundColor: 'pink', py: '20px' }}>
       <Sheet>
@@ -18,6 +29,7 @@ const Discord = () => {
             display: 'flex',
             flexDirection: 'row',
             gap: '10px',
+            bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
             fontFamily: helvetica.className,
           }}
         >
@@ -58,9 +70,7 @@ const Discord = () => {
                 Typescript Community
               </Typography>
 
-              <Typography
-                sx={{ fontSize: '12px', fontFamily: helvetica.className }}
-              >
+              <Typography   sx={{ fontSize: '12px', fontFamily: helvetica.className }}>
                 Today at 6:45 PM
               </Typography>
             </List>
@@ -72,42 +82,38 @@ const Discord = () => {
                 flexDirection: 'row',
                 alignItems: 'stretch',
                 position: 'relative',
-                background: '#dedede',
               }}
             >
-              <Typography
-                sx={{
+              <span
+                style={{
                   top: 0,
                   bottom: 0,
                   left: '-20px',
                   position: 'absolute',
                   width: '20px',
                 }}
-              ></Typography>
-              <Typography
-                sx={{
+              ></span>
+              <span
+                style={{
                   borderRadius: '4px',
                   width: '4px',
                   flexShrink: 0,
                   backgroundColor: '#00d2ff',
                 }}
-              ></Typography>
+              ></span>
               <Stack
                 sx={{
                   flex: '1 1 0',
                   p: '0 12px',
                   wordWrap: 'break-word',
                   width: '100%',
+                  bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
                 }}
               >
                 <List>
                   <ListItem>
                     <Typography
-                      sx={{
-                        fontWeight: 'bold',
-                        marginBottom: '4px',
-                        fontFamily: helvetica.className,
-                      }}
+                      sx={{ fontWeight: 'bold', marginBottom: '4px', fontFamily: helvetica.className, }}
                     >
                       Daniel Rossenwasser
                     </Typography>
@@ -125,12 +131,7 @@ const Discord = () => {
                   Announcing Typescript 5.2 - Typescript
                 </Typography>
                 <Typography
-                  sx={{
-                    marginTop: '4px',
-                    maxWidth: '65%',
-                    color: '#fff',
-                    fontFamily: helvetica.className,
-                  }}
+                  sx={{ marginTop: '4px', maxWidth: '65%', fontFamily: helvetica.className }}
                 >
                   Today we’re excited to announce the release of TypeScript 5.2!
                   If you’re not familiar with TypeScript, it’s a language that
