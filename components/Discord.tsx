@@ -1,15 +1,12 @@
 'use client'
 
-import {
-  Avatar,
-  Box,
-  Sheet,
-  Stack,
-  Typography,
-  List,
-  ListItem,
-  useTheme,
-} from '@mui/joy'
+import { Avatar, Box, Sheet, Stack, Typography, List, ListItem } from '@mui/joy'
+import localFont from 'next/font/local'
+
+const helvetica = localFont({
+  src: '../public/Helvetica Neue Regular.otf',
+  display: 'swap',
+})
 
 const Discord = () => {
   return (
@@ -21,6 +18,7 @@ const Discord = () => {
             display: 'flex',
             flexDirection: 'row',
             gap: '10px',
+            fontFamily: helvetica.className,
           }}
         >
           <Avatar />
@@ -30,7 +28,7 @@ const Discord = () => {
               margin: '-8px -10px -16px -6px',
               minWidth: 0,
               padding: '8px 8px 8px 16px',
-              fontFamily: 'Lato, sans-serif',
+              fontFamily: helvetica.className,
             }}
           >
             <List
@@ -40,6 +38,7 @@ const Discord = () => {
                 gap: '10px',
                 alignItems: 'center',
                 paddingBottom: '2px',
+                fontFamily: helvetica.className,
               }}
             >
               <Typography
@@ -53,12 +52,15 @@ const Discord = () => {
                   alignItems: 'flex-start',
                   height: 'fit-content',
                   minHeight: 0,
+                  fontFamily: helvetica.className,
                 }}
               >
                 Typescript Community
               </Typography>
 
-              <Typography sx={{ fontSize: '12px' }}>
+              <Typography
+                sx={{ fontSize: '12px', fontFamily: helvetica.className }}
+              >
                 Today at 6:45 PM
               </Typography>
             </List>
@@ -101,7 +103,11 @@ const Discord = () => {
                 <List>
                   <ListItem>
                     <Typography
-                      sx={{ fontWeight: 'bold', marginBottom: '4px' }}
+                      sx={{
+                        fontWeight: 'bold',
+                        marginBottom: '4px',
+                        fontFamily: helvetica.className,
+                      }}
                     >
                       Daniel Rossenwasser
                     </Typography>
@@ -113,12 +119,18 @@ const Discord = () => {
                     fontSize: '15px',
                     lineHeight: '1.46668',
                     marginTop: '4px',
+                    fontFamily: helvetica.className,
                   }}
                 >
                   Announcing Typescript 5.2 - Typescript
                 </Typography>
                 <Typography
-                  sx={{ marginTop: '4px', maxWidth: '65%', color: '#fff' }}
+                  sx={{
+                    marginTop: '4px',
+                    maxWidth: '65%',
+                    color: '#fff',
+                    fontFamily: helvetica.className,
+                  }}
                 >
                   Today we’re excited to announce the release of TypeScript 5.2!
                   If you’re not familiar with TypeScript, it’s a language that
