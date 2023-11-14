@@ -8,7 +8,7 @@ const Telegram = (props: { textColor: string }) => {
     <Sheet
       sx={{
         transform: 'none',
-        borderBottomLeftRadius: '6px',
+        borderBottomLeftRadius: 0,
         borderBottomRightRadius: '15px',
         borderTopRightRadius: '15px',
         borderTopLeftRadius: '15px',
@@ -27,7 +27,7 @@ const Telegram = (props: { textColor: string }) => {
           opacity: 1,
           transition: '200ms ease-out',
           color: textColor === '#FFFFFF' ? '#ffff' : '#000000',
-          borderBottomLeftRadius: '6px',
+          borderBottomLeftRadius: 0,
           borderBottomRightRadius: '15px',
           borderTopRightRadius: '15px',
           borderTopLeftRadius: '15px',
@@ -43,7 +43,6 @@ const Telegram = (props: { textColor: string }) => {
             borderTopLeftRadius: '15px',
             borderTopRightRadius: '15px',
             borderBottomRightRadius: '15px',
-            boxShadow: '0 1px 2px',
             fontSize: '16px',
           }}
         >
@@ -121,7 +120,15 @@ const Telegram = (props: { textColor: string }) => {
               fontSize: '16px !important',
             }}
           >
-            <Image width={9} height={20} src={SvgIcon} alt='Icon' />
+            <span
+              style={{
+                clipPath: 'polygon(100% 9%,18% 100%,100% 100%)',
+                width: '9px',
+                height: '18px',
+                display: 'block',
+                backgroundColor: textColor === '#FFFFFF' ? 'black' : '#fff',
+              }}
+            ></span>
           </span>
         </Stack>
       </Stack>
