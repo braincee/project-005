@@ -1,6 +1,4 @@
 import { Sheet, Stack } from '@mui/joy'
-import Image from 'next/image'
-import SvgIcon from '@/public/icon.svg'
 
 const Telegram = (props: { textColor: string }) => {
   const { textColor } = props
@@ -19,6 +17,7 @@ const Telegram = (props: { textColor: string }) => {
         display: 'flex',
         alignItems: 'flex-end',
         maxWidth: '464px',
+        fontFamily: 'system-ui',
       }}
     >
       <Stack

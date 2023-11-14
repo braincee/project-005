@@ -1,5 +1,12 @@
 import { Person } from '@mui/icons-material'
 import { Box, Button, Stack } from '@mui/joy'
+import { Lato } from 'next/font/google'
+
+const lato = Lato({
+  weight: '900',
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const Slack = (props: { textColor: string }) => {
   const { textColor } = props
@@ -9,6 +16,7 @@ const Slack = (props: { textColor: string }) => {
         padding: '8px 20px',
         display: 'flex',
         flexDirection: 'row',
+        fontFamily: lato.className,
       }}
     >
       <Stack sx={{ display: 'flex', flexShrink: 0, marginRight: '8px' }}>
@@ -40,7 +48,6 @@ const Slack = (props: { textColor: string }) => {
           margin: '-12px -8px -16px -16px',
           minWidth: 0,
           padding: '8px 8px 8px 16px',
-          fontFamily: 'Lato san-serif',
           lineHeight: 1.46668,
         }}
       >
