@@ -63,7 +63,7 @@ export default function Home() {
               backgroundColor: 'blue',
             }}
           >
-            <Telegram />
+            <Telegram textColor={textColor} />
           </Sheet>
         </Box>
         <Discord />

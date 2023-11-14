@@ -1,8 +1,9 @@
-import { Box, Sheet, Stack } from '@mui/joy'
+import { Sheet, Stack } from '@mui/joy'
 import Image from 'next/image'
 import SvgIcon from '@/public/icon.svg'
 
-const Telegram = () => {
+const Telegram = (props: { textColor: string }) => {
+  const { textColor } = props
   return (
     <Sheet
       sx={{
@@ -25,18 +26,18 @@ const Telegram = () => {
           transform: 'scale(1) translateX(0)',
           opacity: 1,
           transition: '200ms ease-out',
-          color: '#000000',
+          color: textColor === '#FFFFFF' ? '#ffff' : '#000000',
           borderBottomLeftRadius: '6px',
           borderBottomRightRadius: '15px',
           borderTopRightRadius: '15px',
           borderTopLeftRadius: '15px',
-          bgcolor: '#ffff',
+          bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
         }}
       >
         <Stack
           sx={{
             padding: '5px 8px 6px',
-            bgcolor: '#ffff',
+            bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
             borderRadius: '6px 15px 15px 6px',
             borderBottomLeftRadius: 0,
             borderTopLeftRadius: '15px',

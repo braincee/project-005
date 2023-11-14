@@ -1,7 +1,8 @@
 import { Person } from '@mui/icons-material'
 import { Box, Button, Stack } from '@mui/joy'
 
-const Slack = ({ textColor }, { textColor: string }) => {
+const Slack = (props: { textColor: string }) => {
+  const { textColor } = props
   return (
     <Box
       sx={{
