@@ -1,138 +1,151 @@
-import { Sheet, Stack } from '@mui/joy'
+'use client'
 
-const Telegram = (props: { textColor: string }) => {
-  const { textColor } = props
-  return (
-    <Sheet
-      sx={{
-        transform: 'none',
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: '15px',
-        borderTopRightRadius: '15px',
-        borderTopLeftRadius: '15px',
-        paddingLeft: 0,
-        position: 'relative',
-        opacity: 1,
-        marginBottom: '10px',
-        display: 'flex',
-        alignItems: 'flex-end',
-        maxWidth: '464px',
-        fontFamily: 'system-ui',
-      }}
-    >
-      <Stack
-        sx={{
-          transform: 'scale(1) translateX(0)',
-          opacity: 1,
-          transition: '200ms ease-out',
-          color: textColor === '#FFFFFF' ? '#ffff' : '#000000',
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: '15px',
-          borderTopRightRadius: '15px',
-          borderTopLeftRadius: '15px',
-          bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
-        }}
-      >
+import {
+  Avatar,
+  Box,
+  Sheet,
+  Stack,
+  Typography,
+  List,
+  ListItem,
+} from '@mui/joy'
+
+import localFont from 'next/font/local'
+
+const helvetica = localFont({
+  src: '../public/Helvetica Neue Regular.otf',
+  display: 'swap',
+  weight: '900',
+})
+
+const Discord = (props: { textColor: string }) => {
+    const { textColor } = props
+
+  return ( 
+    <Box>
+        <Sheet>
         <Stack
           sx={{
-            padding: '5px 8px 6px',
+            padding: '8px 20px',
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '10px',
             bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
-            borderRadius: '6px 15px 15px 6px',
-            borderBottomLeftRadius: 0,
-            borderTopLeftRadius: '15px',
-            borderTopRightRadius: '15px',
-            borderBottomRightRadius: '15px',
-            fontSize: '16px',
           }}
         >
+          <Avatar />
           <Stack
             sx={{
+              flex: '1 1 0',
+              margin: '-8px -10px -16px -6px',
               minWidth: 0,
-              borderBottomLeftRadius: 0,
-              borderTopLeftRadius: '15px',
-              borderTopRightRadius: '15px',
-              borderBottomRightRadius: '15px',
+              padding: '8px 8px 8px 16px',
             }}
           >
-            <Stack
+            <List
               sx={{
-                margin: 0,
-                whiteSpace: 'pre-wrap',
-                lineHeight: 1.3125,
-                textAlign: 'initial',
-                borderRadius: '4px',
-                position: 'relative',
-                display: 'inline-block',
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '10px',
+                alignItems: 'center',
+                paddingBottom: '2px',
               }}
             >
-              Today marks a special occasion. Telegram is celebrating its 10th
-              anniversary! In honor of this milestone, and to highlight our web
-              version's long-awaited parity with the native apps, we've leaped
-              from version 1.x straight to 10.0. Big day! An experimental
-              <br />
-              <br />
-              We've patched several problems, including issues with sending
-              messages while uploading files, freezes while scrolling, and
-              messages incorrectly marking as read with Web A in the background.
-              See if you can spot the host of UI refinements we added as well
-              <br />
-              <br />
-              We've implemented multiple memory and performance optimizations
-              for a smoother, faster, more efficient Telegram experience.
-              <span
-                style={{
-                  position: 'relative',
-                  top: '6px',
-                  bottom: 'auto !important',
-                  right: 0,
-                  float: 'right',
-                  lineHeight: 1.35,
-                  height: '16px',
-                  marginLeft: '7px',
-                  marginRight: '-8px',
+              <Typography
+                sx={{
+                  padding: 0,
+                  margin: 0,
+                  border: 0,
                   background: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0 4px',
+                  fontSize: '15px',
+                  fontWeight: 900,
+                  alignItems: 'flex-start',
+                  height: 'fit-content',
+                  minHeight: 0,
+                  fontFamily: helvetica.className,
                 }}
               >
-                <span
-                  style={{
-                    marginRight: '3px',
-                    fontSize: '12px',
-                    color: '#686c72bf',
+                Typescript Community
+              </Typography>
+
+              <Typography   sx={{ fontSize: '12px', fontFamily: helvetica.className,}}>
+                Today at 6:45 PM
+              </Typography>
+            </List>
+            <Stack
+              sx={{
+                width: '100%',
+                maxWidth: '600px',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'stretch',
+                position: 'relative',
+              }}
+            >
+              <span
+                style={{
+                  top: 0,
+                  bottom: 0,
+                  left: '-20px',
+                  position: 'absolute',
+                  width: '20px',
+                }}
+              ></span>
+              <span
+                style={{
+                  borderRadius: '4px',
+                  width: '4px',
+                  flexShrink: 0,
+                  backgroundColor: '#00d2ff',
+                }}
+              ></span>
+              <Stack
+                sx={{
+                  flex: '1 1 0',
+                  p: '0 12px',
+                  wordWrap: 'break-word',
+                  width: '100%',
+                  bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
+                }}
+              >
+                <List>
+                  <ListItem>
+                    <Typography
+                      sx={{ fontWeight: 'bold', marginBottom: '4px', fontFamily: helvetica.className,}}
+                    >
+                      Daniel Rossenwasser
+                    </Typography>
+                  </ListItem>
+                </List>
+                <Typography
+                  sx={{
+                    fontWeight: 'bold',
+                    fontSize: '15px',
+                    lineHeight: '1.46668',
+                    marginTop: '4px',
+                    fontFamily: helvetica.className,
                   }}
                 >
-                  10: 40
-                </span>
-              </span>
+                  Announcing Typescript 5.2 - Typescript
+                </Typography>
+                <Typography
+                  sx={{ marginTop: '4px', maxWidth: '65%', fontFamily: helvetica.className,}}
+                >
+                  Today we’re excited to announce the release of TypeScript 5.2!
+                  If you’re not familiar with TypeScript, it’s a language that
+                  builds on top of JavaScript by making it possible to declare
+                  and describe types. Writing types in our code allows us to
+                  explain intent and have other tools check our code to catch
+                  mistakes like typos,
+                </Typography>
+              </Stack>
             </Stack>
           </Stack>
-          <span
-            style={{
-              position: 'absolute',
-              left: '-8.992px',
-              overflow: 'hidden',
-              bottom: '-1px',
-              width: '9px',
-              height: '18px',
-              fontSize: '16px !important',
-            }}
-          >
-            <span
-              style={{
-                clipPath: 'polygon(100% 9%,18% 100%,100% 100%)',
-                width: '9px',
-                height: '18px',
-                display: 'block',
-                backgroundColor: textColor === '#FFFFFF' ? 'black' : '#fff',
-              }}
-            ></span>
-          </span>
         </Stack>
-      </Stack>
-    </Sheet>
+      </Sheet>
+    </Box>
+     
   )
 }
 
-export default Telegram
+export default Discord

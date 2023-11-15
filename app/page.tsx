@@ -67,7 +67,7 @@ export default function Home() {
           </Sheet>
         </Box>
         <Box sx={{ backgroundColor: 'pink', py: '20px' }}>
-         <Discord />
+          <Discord textColor={textColor}/>
         </Box>
       </Box>
     </main>

@@ -15,14 +15,15 @@ import localFont from 'next/font/local'
 const helvetica = localFont({
   src: '../public/Helvetica Neue Regular.otf',
   display: 'swap',
+  weight: '900',
 })
 
 const Discord = (props: { textColor: string }) => {
     const { textColor } = props
 
-  return (
-    <Box sx={{ backgroundColor: 'pink', py: '20px' }}>
-      <Sheet>
+  return ( 
+    <Box>
+        <Sheet>
         <Stack
           sx={{
             padding: '8px 20px',
@@ -30,7 +31,6 @@ const Discord = (props: { textColor: string }) => {
             flexDirection: 'row',
             gap: '10px',
             bgcolor: textColor === '#FFFFFF' ? '#0000' : '#ffff',
-            fontFamily: helvetica.className,
           }}
         >
           <Avatar />
@@ -40,7 +40,6 @@ const Discord = (props: { textColor: string }) => {
               margin: '-8px -10px -16px -6px',
               minWidth: 0,
               padding: '8px 8px 8px 16px',
-              fontFamily: helvetica.className,
             }}
           >
             <List
@@ -50,7 +49,6 @@ const Discord = (props: { textColor: string }) => {
                 gap: '10px',
                 alignItems: 'center',
                 paddingBottom: '2px',
-                fontFamily: helvetica.className,
               }}
             >
               <Typography
@@ -70,7 +68,7 @@ const Discord = (props: { textColor: string }) => {
                 Typescript Community
               </Typography>
 
-              <Typography   sx={{ fontSize: '12px', fontFamily: helvetica.className }}>
+              <Typography   sx={{ fontSize: '12px', fontFamily: helvetica.className,}}>
                 Today at 6:45 PM
               </Typography>
             </List>
@@ -113,7 +111,7 @@ const Discord = (props: { textColor: string }) => {
                 <List>
                   <ListItem>
                     <Typography
-                      sx={{ fontWeight: 'bold', marginBottom: '4px', fontFamily: helvetica.className, }}
+                      sx={{ fontWeight: 'bold', marginBottom: '4px', fontFamily: helvetica.className,}}
                     >
                       Daniel Rossenwasser
                     </Typography>
@@ -131,7 +129,7 @@ const Discord = (props: { textColor: string }) => {
                   Announcing Typescript 5.2 - Typescript
                 </Typography>
                 <Typography
-                  sx={{ marginTop: '4px', maxWidth: '65%', fontFamily: helvetica.className }}
+                  sx={{ marginTop: '4px', maxWidth: '65%', fontFamily: helvetica.className,}}
                 >
                   Today we’re excited to announce the release of TypeScript 5.2!
                   If you’re not familiar with TypeScript, it’s a language that
@@ -146,6 +144,7 @@ const Discord = (props: { textColor: string }) => {
         </Stack>
       </Sheet>
     </Box>
+     
   )
 }
 
