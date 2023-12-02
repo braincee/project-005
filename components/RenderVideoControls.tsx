@@ -118,7 +118,7 @@ export const RenderVideoControls: React.FC<{
           />
           <Spacing></Spacing>
           <AlignEnd>
-            <DownloadButton undo={undo} state={state}></DownloadButton>
+            {/* <DownloadButton undo={undo} state={state}></DownloadButton> */}
           </AlignEnd>
         </>
       ) : null}
