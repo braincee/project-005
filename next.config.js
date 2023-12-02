@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    proxyTimeout: 1000 * 600,
+  },
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
@@ -8,12 +11,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/image',
-        destination: 'http://localhost:3000/api/image',
-      },
-      {
-        source: '/api/video',
-        destination: 'http://localhost:3000/api/video',
+        source: '/api/:path*',
+        destination: 'http://localhost:3000/api/:path*',
       },
     ]
   },

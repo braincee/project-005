@@ -11,8 +11,6 @@ export type State =
       status: 'invoking'
     }
   | {
-      // renderId: string
-      // bucketName: string
       progress: number
       status: 'rendering'
     }
@@ -22,8 +20,7 @@ export type State =
       error: Error
     }
   | {
-      url: string
-      size: number
+      message: string
       status: 'done'
     }
 
@@ -48,14 +45,11 @@ export const useVideoRendering = (
       status: 'invoking',
     })
     try {
-      const myVideo = await renderNewVideo({ id, inputProps })
+      const { message } = await renderNewVideo({ id, inputProps })
       setState({
-        status: 'rendering',
-        progress: 0,
-        // renderId: renderId,
-        // bucketName: bucketName,
+        status: 'done',
+        message,
       })
-      console.log('My Video >>>', myVideo)
 
       // let pending = true
 

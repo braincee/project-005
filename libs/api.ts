@@ -1,12 +1,10 @@
 import { z } from 'zod'
 import {
   ProgressRequest,
-  ProgressResponse,
   RenderImageRequest,
   RenderVideoRequest,
 } from './types/schema'
 import { imageCompSchema, videoCompSchema } from './types/constants'
-import { ApiResponse } from './helpers/api-response'
 
 const makeRequest = async (endpoint: string, body: unknown) => {
   const result = await fetch(endpoint, {
