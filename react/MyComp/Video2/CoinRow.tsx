@@ -45,7 +45,7 @@ export const CoinRow = ({
         <p style={{ fontSize: '100px' }}>{coinName}</p>
       </div>
       <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-        <span style={{ fontSize: '60px' }}>{value}</span>
+        <span style={{ fontSize: '60px', width: '150px' }}>{value}</span>
         <Img height={100} width={100} src={staticFile(arrowPath)} />
       </div>
     </div>
