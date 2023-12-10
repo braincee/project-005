@@ -1,19 +1,19 @@
 'use client'
 
+import { RenderImageControls } from '@/components/RenderImageControls'
+import {
+  DURATION_IN_FRAMES,
+  HEIGHT,
+  VIDEO_FPS,
+  WIDTH,
+  defaultImageCompProps,
+  imageCompSchema,
+} from '@/libs/types/constants'
+import { ImageComp } from '@/remotion/bundle/MyComp/Image/ImageComp'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
-import {
-  defaultImageCompProps,
-  DURATION_IN_FRAMES,
-  imageCompSchema,
-  HEIGHT,
-  WIDTH,
-  VIDEO_FPS,
-} from '@/libs/types/constants'
 import { z } from 'zod'
-import { RenderImageControls } from '@/components/RenderImageControls'
-import { ImageComp } from '@/react/MyComp/Image/ImageComp'
 
 const outer: React.CSSProperties = {
   overflow: 'hidden',
@@ -62,7 +62,7 @@ const Image: NextPage = () => {
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
             style={player}
-            controls
+            controls={true}
           />
         </div>
         <div style={control}>

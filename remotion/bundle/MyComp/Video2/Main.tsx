@@ -1,8 +1,8 @@
 import { useVideoConfig } from 'remotion'
 import { CoinRow } from './CoinRow'
-import { Heading } from './Heading'
 import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
 import { z } from 'zod'
+import { Heading } from './Heading'
 
 export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
   coinRows,

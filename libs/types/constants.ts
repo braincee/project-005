@@ -20,15 +20,7 @@ export const coinRowSchema = z.object({
 })
 
 export const video2CompSchema = z.object({
-  coinRows: z.array(
-    z.object({
-      name: z.string(),
-      value: z.number(),
-      change: z.number(),
-      direction: z.string(),
-      imageUrl: z.string(),
-    })
-  ),
+  coinRows: z.array(coinRowSchema),
 })
 
 export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {

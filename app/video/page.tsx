@@ -1,19 +1,19 @@
 'use client'
 
+import { RenderVideoControls } from '@/components/RenderVideoControls'
+import {
+  DURATION_IN_FRAMES,
+  HEIGHT,
+  VIDEO_FPS,
+  WIDTH,
+  defaultVideoCompProps,
+  videoCompSchema,
+} from '@/libs/types/constants'
+import { VideoComp } from '@/remotion/bundle/MyComp/Video/VideoComp'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
-import {
-  defaultVideoCompProps,
-  DURATION_IN_FRAMES,
-  HEIGHT,
-  WIDTH,
-  VIDEO_FPS,
-  videoCompSchema,
-} from '@/libs/types/constants'
 import { z } from 'zod'
-import { RenderVideoControls } from '@/components/RenderVideoControls'
-import { VideoComp } from '@/react/MyComp/Video/VideoComp'
 
 const outer: React.CSSProperties = {
   overflow: 'hidden',
@@ -62,8 +62,8 @@ const Video: NextPage = () => {
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
             style={player}
-            controls
-            loop
+            controls={true}
+            loop={true}
           />
         </div>
         <div style={control}>

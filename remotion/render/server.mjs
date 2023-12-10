@@ -1,8 +1,8 @@
-import express from 'express'
-import cors from 'cors'
+import { renderMedia, renderStill, selectComposition } from '@remotion/renderer'
 import bodyParser from 'body-parser'
-import { renderStill, selectComposition, renderMedia } from '@remotion/renderer'
-import myBundle from '../bundle.mjs'
+import cors from 'cors'
+import express from 'express'
+import myBundle from './bundle.mjs'
 
 const PORT = 3000
 
@@ -22,14 +22,14 @@ app.post('/api/image', async (req, res) => {
     inputProps,
   })
 
-  const result = await renderStill({
+  await renderStill({
     composition: composition,
     serveUrl: bundleLocation,
-    // output: `out/${id}.png`,
+    output: `out/${id}.png`,
     inputProps,
   })
 
-  res.send({ message: 'Render done', result })
+  res.send({ message: 'Render done' })
 })
 
 app.post('/api/video', async (req, res) => {

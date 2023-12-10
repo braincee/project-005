@@ -42,15 +42,22 @@ export const CoinRow = ({
   const opacity = interpolate(
     frame,
     [
-      currentTextIndex * textInterval - 40,
-      currentTextIndex * textInterval + 20,
+      currentTextIndex * textInterval - 10,
+      currentTextIndex * textInterval,
+      currentTextIndex * textInterval + 10,
+      currentTextIndex * textInterval + 30,
     ],
-    [0, 1],
+    [1, 0, 0, 1],
     {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
     }
   )
+
+  const opacity2 = interpolate(frame, [0, 20], [0.6, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  })
 
   return (
     <div style={container}>
@@ -59,13 +66,29 @@ export const CoinRow = ({
         <p style={{ fontSize: '100px' }}>{name}</p>
       </div>
       <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-        <span style={{ fontSize: '60px', width: '150px', opacity }}>
+        <span
+          style={{
+            fontSize: '60px',
+            width: '150px',
+            opacity,
+          }}
+        >
           {myValue}
         </span>
         {direction === 'down' ? (
-          <Img height={100} width={100} src={staticFile('triangle-down.svg')} />
+          <Img
+            style={{ opacity: opacity2 }}
+            height={100}
+            width={100}
+            src={staticFile('triangle-down.svg')}
+          />
         ) : (
-          <Img height={100} width={100} src={staticFile('triangle-up.svg')} />
+          <Img
+            style={{ opacity: opacity2 }}
+            height={100}
+            width={100}
+            src={staticFile('triangle-up.svg')}
+          />
         )}
       </div>
     </div>

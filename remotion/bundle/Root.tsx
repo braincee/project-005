@@ -1,20 +1,20 @@
 import { Composition, Still } from 'remotion'
 import {
   DURATION_IN_FRAMES,
-  VIDEO_FPS,
-  VIDEO_COMP_NAME,
-  IMAGE_COMP_NAME,
-  videoCompSchema,
-  imageCompSchema,
-  defaultImageCompProps,
-  defaultVideoCompProps,
-  WIDTH,
   HEIGHT,
+  IMAGE_COMP_NAME,
+  VIDEO_COMP_NAME,
+  VIDEO_FPS,
+  WIDTH,
+  defaultImageCompProps,
   defaultVideo2CompProps,
+  defaultVideoCompProps,
+  imageCompSchema,
   video2CompSchema,
-} from '../libs/types/constants'
-import { VideoComp } from './MyComp/Video/VideoComp'
+  videoCompSchema,
+} from '../../libs/types/constants'
 import { ImageComp } from './MyComp/Image/ImageComp'
+import { VideoComp } from './MyComp/Video/VideoComp'
 import { Main } from './MyComp/Video2/Main'
 
 export const RemotionRoot: React.FC = () => {

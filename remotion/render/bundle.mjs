@@ -1,8 +1,8 @@
-import { bundle } from '@remotion/bundler'
 import path from 'path'
+import { bundle } from '@remotion/bundler'
 
 const myBundle = await bundle({
-  entryPoint: path.join(process.cwd(), 'react', 'index.ts'),
+  entryPoint: path.join(process.cwd(), 'remotion', 'bundle', 'index.ts'),
   webpackOverride: (config) => config,
 })
 

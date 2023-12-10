@@ -1,10 +1,10 @@
 import { z } from 'zod'
+import { imageCompSchema, videoCompSchema } from './types/constants'
 import {
   ProgressRequest,
   RenderImageRequest,
   RenderVideoRequest,
 } from './types/schema'
-import { imageCompSchema, videoCompSchema } from './types/constants'
 
 const makeRequest = async (endpoint: string, body: unknown) => {
   const result = await fetch(endpoint, {
@@ -18,7 +18,6 @@ const makeRequest = async (endpoint: string, body: unknown) => {
   if (json.type === 'error') {
     throw new Error(json.message)
   }
-  console.log(json)
   return json
 }
 
@@ -34,7 +33,7 @@ export const renderNewVideo = async ({
     inputProps,
   }
 
-  return makeRequest('/api/video', body)
+  return makeRequest(`${process.env.RENDER_URL}/api/video`, body)
 }
 
 export const renderImage = async ({
@@ -49,9 +48,10 @@ export const renderImage = async ({
     inputProps,
   }
 
-  return makeRequest('/api/image', body)
+  return makeRequest(`${process.env.RENDER_URL}/api/image`, body)
 }
 
+// TODO: figure out how to get progress from local render
 export const getProgress = async ({
   id,
   bucketName,
@@ -64,5 +64,5 @@ export const getProgress = async ({
     bucketName,
   }
 
-  return makeRequest('/api/lambda/progress', body)
+  return makeRequest(`${process.env.RENDER_URL}/api/lambda/progress`, body)
 }
