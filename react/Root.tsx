@@ -10,6 +10,8 @@ import {
   defaultVideoCompProps,
   WIDTH,
   HEIGHT,
+  defaultVideo2CompProps,
+  video2CompSchema,
 } from '../libs/types/constants'
 import { VideoComp } from './MyComp/Video/VideoComp'
 import { ImageComp } from './MyComp/Image/ImageComp'
@@ -43,6 +45,8 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO_FPS}
         width={WIDTH}
         height={HEIGHT}
+        schema={video2CompSchema}
+        defaultProps={defaultVideo2CompProps}
       />
     </>
   )

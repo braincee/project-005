@@ -11,6 +11,26 @@ export const videoCompSchema = z.object({
   pageHeading: z.string(),
 })
 
+export const coinRowSchema = z.object({
+  name: z.string(),
+  value: z.number(),
+  change: z.number(),
+  direction: z.string(),
+  imageUrl: z.string(),
+})
+
+export const video2CompSchema = z.object({
+  coinRows: z.array(
+    z.object({
+      name: z.string(),
+      value: z.number(),
+      change: z.number(),
+      direction: z.string(),
+      imageUrl: z.string(),
+    })
+  ),
+})
+
 export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
   titleTexts: [
     'Balancer Exploit Results in $900K stolen from LPs',
@@ -21,6 +41,32 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
   ],
   titleColor: '#ffff',
   pageHeading: 'Remotion Video',
+}
+
+export const defaultVideo2CompProps: z.infer<typeof video2CompSchema> = {
+  coinRows: [
+    {
+      imageUrl: 'btc.svg',
+      name: 'BTC',
+      value: 23119,
+      change: 0.4,
+      direction: 'up',
+    },
+    {
+      imageUrl: 'eth.svg',
+      name: 'ETH',
+      value: 1601,
+      change: 0.1,
+      direction: 'up',
+    },
+    {
+      imageUrl: 'ada.svg',
+      name: 'ADA',
+      value: 0.36,
+      change: 1.3,
+      direction: 'down',
+    },
+  ],
 }
 
 export const imageCompSchema = z.object({

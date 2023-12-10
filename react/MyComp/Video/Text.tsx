@@ -16,14 +16,9 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
 
   const textInterval = videoConfig.durationInFrames / titleTexts.length
 
-  const currentTextIndex = Math.floor(frame / textInterval)
-
   const translateYX = interpolate(
     frame,
-    [
-      currentTextIndex * textInterval + 10,
-      currentTextIndex * textInterval + 20,
-    ],
+    [120 * textInterval + 10, 120 * textInterval + 20],
     [400, 0],
     {
       extrapolateLeft: 'clamp',
