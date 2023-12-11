@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { useCallback, useMemo, useState } from 'react'
-import { renderNewVideo } from '../api'
-import { videoCompSchema } from '../types/constants'
+import { renderNewVideo2 } from '../api'
+import { video2CompSchema } from '../types/constants'
 
 export type State =
   | {
@@ -24,9 +24,9 @@ export type State =
       status: 'done'
     }
 
-export const useVideoRendering = (
+export const useVideo2Rendering = (
   id: string,
-  inputProps: z.infer<typeof videoCompSchema>
+  inputProps: z.infer<typeof video2CompSchema>
 ) => {
   const [state, setState] = useState<State>({
     status: 'init',
@@ -37,7 +37,7 @@ export const useVideoRendering = (
       status: 'invoking',
     })
     try {
-      const { message } = await renderNewVideo({ id, inputProps })
+      const { message } = await renderNewVideo2({ id, inputProps })
       setState({
         status: 'done',
         message,

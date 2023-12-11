@@ -56,6 +56,30 @@ app.post('/api/video', async (req, res) => {
   res.json({ message: 'Render done' })
 })
 
+app.post('/api/video2', async (req, res) => {
+  const { id, inputProps } = req.body
+
+  const composition = await selectComposition({
+    serveUrl: bundleLocation,
+    id,
+    inputProps,
+  })
+
+  const onProgress = ({ progress }) => {
+    console.log(`Rendering is ${progress * 100}% complete`)
+  }
+  await renderMedia({
+    composition: composition,
+    serveUrl: bundleLocation,
+    codec: 'h264',
+    outputLocation: `out/${id}.mp4`,
+    inputProps,
+    onProgress,
+  })
+
+  res.json({ message: 'Render done' })
+})
+
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`)
 })

@@ -14,7 +14,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
       style={{
         width: width,
         height: height,
-        backgroundColor: '#350d36',
+        backgroundColor: '#030c2b',
         display: 'flex',
         flexDirection: 'column',
         color: '#fff',

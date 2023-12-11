@@ -1,8 +1,13 @@
 import { z } from 'zod'
-import { imageCompSchema, videoCompSchema } from './types/constants'
+import {
+  imageCompSchema,
+  video2CompSchema,
+  videoCompSchema,
+} from './types/constants'
 import {
   ProgressRequest,
   RenderImageRequest,
+  RenderVideo2Request,
   RenderVideoRequest,
 } from './types/schema'
 
@@ -36,6 +41,21 @@ export const renderNewVideo = async ({
   return makeRequest(`${process.env.RENDER_URL}/api/video`, body)
 }
 
+export const renderNewVideo2 = async ({
+  id,
+  inputProps,
+}: {
+  id: string
+  inputProps: z.infer<typeof video2CompSchema>
+}) => {
+  const body: z.infer<typeof RenderVideo2Request> = {
+    id,
+    inputProps,
+  }
+
+  return makeRequest(`${process.env.RENDER_URL}/api/video2`, body)
+}
+
 export const renderImage = async ({
   id,
   inputProps,
@@ -47,6 +67,7 @@ export const renderImage = async ({
     id,
     inputProps,
   }
+  console.log('Test', process.env.RENDER_URL)
 
   return makeRequest(`${process.env.RENDER_URL}/api/image`, body)
 }

@@ -1,10 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        dangerouslyAllowSVG: true,
-        contentDispositionType: 'attachment',
-        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    },
+  experimental: {
+    proxyTimeout: 1000 * 600,
+  },
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:3001/api/:path*',
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

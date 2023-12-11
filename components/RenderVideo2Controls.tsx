@@ -6,9 +6,9 @@ import { Input } from './Input'
 import { InputContainer } from './Container'
 import { AlignEnd } from './AlignEnd'
 import { Button } from './Button/Button'
-import { useVideoRendering } from '@/libs/helpers/use-video-rendering'
-import { VIDEO_COMP_NAME, videoCompSchema } from '@/libs/types/constants'
+import { VIDEO_COMP_NAME, video2CompSchema } from '@/libs/types/constants'
 import { ErrorComp } from './Error'
+import { useVideo2Rendering } from '@/libs/helpers/use-video2-rendering'
 
 const textarea: React.CSSProperties = {
   resize: 'none',
@@ -35,7 +35,7 @@ export const RenderVideoControls: React.FC<{
   setColor: React.Dispatch<React.SetStateAction<string>>
   pageHeading: string
   setPageHeading: React.Dispatch<React.SetStateAction<string>>
-  inputProps: z.infer<typeof videoCompSchema>
+  inputProps: z.infer<typeof video2CompSchema>
 }> = ({
   texts,
   setTexts,
@@ -45,7 +45,7 @@ export const RenderVideoControls: React.FC<{
   setPageHeading,
   inputProps,
 }) => {
-  const { renderMedia, state, undo } = useVideoRendering(
+  const { renderMedia, state, undo } = useVideo2Rendering(
     VIDEO_COMP_NAME,
     inputProps
   )

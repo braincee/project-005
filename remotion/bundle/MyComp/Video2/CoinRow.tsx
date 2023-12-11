@@ -43,18 +43,46 @@ export const CoinRow = ({
     frame,
     [
       currentTextIndex * textInterval - 10,
-      currentTextIndex * textInterval,
-      currentTextIndex * textInterval + 10,
-      currentTextIndex * textInterval + 30,
+      currentTextIndex * textInterval + 20,
+      (currentTextIndex + 1) * textInterval - 10,
+      (currentTextIndex + 1) * textInterval,
     ],
-    [1, 0, 0, 1],
+    [0, 1, 1, 0],
     {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
     }
   )
 
-  const opacity2 = interpolate(frame, [0, 20], [0.6, 1], {
+  const opacity2 = interpolate(
+    frame,
+    [
+      currentTextIndex * textInterval - 10,
+      currentTextIndex * textInterval + 10,
+    ],
+    [0.6, 1],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    }
+  )
+
+  const scale1 = interpolate(
+    frame,
+    [
+      currentTextIndex * textInterval - 10,
+      currentTextIndex * textInterval + 10,
+      (currentTextIndex + 1) * textInterval - 10,
+      (currentTextIndex + 1) * textInterval,
+    ],
+    [0.6, 1, 1, 0],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    }
+  )
+
+  const scale2 = interpolate(frame, [0, 10, 15, 20], [0.6, 1, 1, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   })
@@ -71,20 +99,21 @@ export const CoinRow = ({
             fontSize: '60px',
             width: '150px',
             opacity,
+            transform: `scale(${scale1})`,
           }}
         >
           {myValue}
         </span>
         {direction === 'down' ? (
           <Img
-            style={{ opacity: opacity2 }}
+            style={{ opacity: opacity2, transform: `scale(${scale2})` }}
             height={100}
             width={100}
             src={staticFile('triangle-down.svg')}
           />
         ) : (
           <Img
-            style={{ opacity: opacity2 }}
+            style={{ opacity: opacity2, transform: `scale(${scale2})` }}
             height={100}
             width={100}
             src={staticFile('triangle-up.svg')}
