@@ -1,17 +1,17 @@
 import { z } from 'zod'
 import { Spacing } from './Spacing'
 import { DropDown } from './DropDown'
-import { Input } from './Input'
 import { InputContainer } from './Container'
 import { AlignEnd } from './AlignEnd'
 import { Button } from './Button/Button'
 import {
-  VIDEO_COMP_NAME,
   video2CompSchema,
   coinRowSchema,
+  VIDEO2_COMP_NAME,
 } from '@/libs/types/constants'
 import { ErrorComp } from './Error'
 import { useVideo2Rendering } from '@/libs/helpers/use-video2-rendering'
+import { Input } from './Input'
 
 const textarea: React.CSSProperties = {
   resize: 'none',
@@ -51,13 +51,30 @@ export const RenderVideo2Controls: React.FC<{
   pageHeading: string
   setPageHeading: React.Dispatch<React.SetStateAction<string>>
   inputProps: z.infer<typeof video2CompSchema>
-}> = ({ coinRows, setCoinRows, inputProps }) => {
-  const { renderMedia, state, undo } = useVideo2Rendering(
-    VIDEO_COMP_NAME,
+}> = ({ coinRows, setCoinRows, pageHeading, setPageHeading, inputProps }) => {
+  const { renderMedia, state } = useVideo2Rendering(
+    VIDEO2_COMP_NAME,
     inputProps
   )
 
-  const handleChange = (
+  const handleNameChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    textIndex: number
+  ) => {
+    setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
+      const newCoinRows = prevCoinRows.map(
+        (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
+          if (index === textIndex) {
+            return { ...coinRow, [e.target.name]: e.target.value.toUpperCase() }
+          }
+          return coinRow
+        }
+      )
+      return newCoinRows
+    })
+  }
+
+  const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     textIndex: number,
     name: string
@@ -65,33 +82,72 @@ export const RenderVideo2Controls: React.FC<{
     setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
       const newCoinRows = prevCoinRows.map(
         (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
-          if (index === textIndex) {
-            return { ...coinRow, [`${name}`]: e.target.value }
+          if (index === textIndex && name === e.target.name) {
+            return {
+              ...coinRow,
+              [`${e.target.name}`]: e.target.value,
+            }
           }
           return coinRow
         }
       )
-      console.log(newCoinRows)
+      return newCoinRows
+    })
+  }
+
+  const handleDoubleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    textIndex: number
+  ) => {
+    setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
+      const newCoinRows = prevCoinRows.map(
+        (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
+          if (index === textIndex) {
+            return {
+              ...coinRow,
+              [`${e.target.name}`]: Number(e.target.value),
+            }
+          }
+          return coinRow
+        }
+      )
+      return newCoinRows
+    })
+  }
+
+  const handleValueChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    textIndex: number
+  ) => {
+    setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
+      const newCoinRows = prevCoinRows.map(
+        (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
+          if (index === textIndex) {
+            return {
+              ...coinRow,
+              [`${e.target.name}`]: Number(e.target.value),
+            }
+          }
+          return coinRow
+        }
+      )
       return newCoinRows
     })
   }
 
   const handleSelect = (
     e: React.ChangeEvent<HTMLSelectElement>,
-    textIndex: number,
-    name: string
+    textIndex: number
   ) => {
     setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
       const newCoinRows = prevCoinRows.map(
         (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
           if (index === textIndex) {
-            console.log(e.target.value)
-            return { ...coinRow, [`${name}`]: e.target.value }
+            return { ...coinRow, [e.target.name]: e.target.value }
           }
           return coinRow
         }
       )
-      console.log(newCoinRows)
       return newCoinRows
     })
   }
@@ -102,15 +158,19 @@ export const RenderVideo2Controls: React.FC<{
       state.status === 'invoking' ||
       state.status === 'error' ? (
         <div style={controls}>
+          <DropDown text='Heading'>
+            <Input setText={setPageHeading} text={pageHeading}></Input>
+          </DropDown>
           {coinRows?.map((coinRow, index) => (
             <div key={index}>
               <DropDown text={`CoinRow${index + 1}`}>
                 <div>
                   <p>Name:</p>
                   <input
+                    name='name'
                     style={textarea}
-                    value={coinRow.name}
-                    onChange={(e) => handleChange(e, index, 'name')}
+                    value={coinRow.name.toUpperCase()}
+                    onChange={(e) => handleNameChange(e, index)}
                   />
                 </div>
                 <Spacing></Spacing>
@@ -118,10 +178,11 @@ export const RenderVideo2Controls: React.FC<{
                 <div>
                   <p>Change:</p>
                   <input
+                    name='change'
                     style={textarea}
                     value={coinRow.change}
                     type='number'
-                    onChange={(e) => handleChange(e, index, 'change')}
+                    onChange={(e) => handleDoubleChange(e, index)}
                   />
                 </div>
                 <Spacing></Spacing>
@@ -129,10 +190,11 @@ export const RenderVideo2Controls: React.FC<{
                 <div>
                   <p>Value:</p>
                   <input
+                    name='value'
                     style={textarea}
                     value={coinRow.value}
                     type='number'
-                    onChange={(e) => handleChange(e, index, 'value')}
+                    onChange={(e) => handleValueChange(e, index)}
                   />
                 </div>
                 <Spacing></Spacing>
@@ -140,9 +202,10 @@ export const RenderVideo2Controls: React.FC<{
                 <div>
                   <p>Image URL:</p>
                   <input
+                    name='imageUrl'
                     style={textarea}
                     value={coinRow.imageUrl}
-                    onChange={(e) => handleChange(e, index, 'imageUrl')}
+                    onChange={(e) => handleImageChange(e, index, 'imageUrl')}
                   />
                 </div>
                 <Spacing></Spacing>
@@ -150,9 +213,10 @@ export const RenderVideo2Controls: React.FC<{
                 <div>
                   <p>Direction:</p>
                   <select
+                    name='direction'
                     style={select}
                     value={coinRow.direction}
-                    onChange={(e) => handleSelect(e, index, 'direction')}
+                    onChange={(e) => handleSelect(e, index)}
                   >
                     <option value='up'>up</option>
                     <option value='down'>down</option>

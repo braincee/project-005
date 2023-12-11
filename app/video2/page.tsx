@@ -39,16 +39,15 @@ const Video2: NextPage = () => {
   const [pageHeading, setPageHeading] = useState(
     defaultVideoCompProps.pageHeading
   )
-
   const inputProps: z.infer<typeof video2CompSchema> = useMemo(() => {
     return {
-      coinRows: [],
+      coinRows,
     }
   }, [coinRows])
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center' }}>{pageHeading}</h1>
+      <h1 style={{ textAlign: 'center', fontSize: '24px' }}>{pageHeading}</h1>
       <div className='container'>
         <div style={outer}>
           <Player

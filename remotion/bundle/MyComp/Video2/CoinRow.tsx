@@ -37,7 +37,9 @@ export const CoinRow = ({
     } else if ((frame / 120) % 2 === 0 && myValue !== `${change}%`) {
       setMyValue(`${change}%`)
     }
-  }, [frame])
+  }, [frame, value, change])
+
+  console.log(value, change)
 
   const opacity = interpolate(
     frame,
