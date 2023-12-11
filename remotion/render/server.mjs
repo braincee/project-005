@@ -4,7 +4,7 @@ import cors from 'cors'
 import express from 'express'
 import myBundle from './bundle.mjs'
 
-const PORT = 3000
+const PORT = 3001
 
 const app = express()
 app.use(bodyParser.json())

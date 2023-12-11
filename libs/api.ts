@@ -10,6 +10,7 @@ import {
   RenderVideo2Request,
   RenderVideoRequest,
 } from './types/schema'
+import { env } from '@/env.mjs'
 
 const makeRequest = async (endpoint: string, body: unknown) => {
   const result = await fetch(endpoint, {
@@ -38,7 +39,7 @@ export const renderNewVideo = async ({
     inputProps,
   }
 
-  return makeRequest(`${process.env.RENDER_URL}/api/video`, body)
+  return makeRequest(`${env.NEXT_PUBLIC_RENDER_URL}/api/video`, body)
 }
 
 export const renderNewVideo2 = async ({
@@ -53,7 +54,7 @@ export const renderNewVideo2 = async ({
     inputProps,
   }
 
-  return makeRequest(`${process.env.RENDER_URL}/api/video2`, body)
+  return makeRequest(`${env.NEXT_PUBLIC_RENDER_URL}/api/video2`, body)
 }
 
 export const renderImage = async ({
@@ -67,9 +68,9 @@ export const renderImage = async ({
     id,
     inputProps,
   }
-  console.log('Test', process.env.RENDER_URL)
+  console.log('Test', env.NEXT_PUBLIC_RENDER_URL)
 
-  return makeRequest(`${process.env.RENDER_URL}/api/image`, body)
+  return makeRequest(`${env.NEXT_PUBLIC_RENDER_URL}/api/image`, body)
 }
 
 // TODO: figure out how to get progress from local render
@@ -85,5 +86,5 @@ export const getProgress = async ({
     bucketName,
   }
 
-  return makeRequest(`${process.env.RENDER_URL}/api/lambda/progress`, body)
+  return makeRequest(`${env.NEXT_PUBLIC_RENDER_URL}/api/lambda/progress`, body)
 }
