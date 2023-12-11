@@ -3,6 +3,7 @@ import {
   DURATION_IN_FRAMES,
   HEIGHT,
   IMAGE_COMP_NAME,
+  VIDEO2_COMP_NAME,
   VIDEO_COMP_NAME,
   VIDEO_FPS,
   WIDTH,
@@ -39,7 +40,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={defaultImageCompProps}
       />
       <Composition
-        id='MyVideo2'
+        id={VIDEO2_COMP_NAME}
         component={Main}
         durationInFrames={420}
         fps={VIDEO_FPS}

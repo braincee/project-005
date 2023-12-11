@@ -3,6 +3,7 @@ import { zColor } from '@remotion/zod-types'
 
 export const IMAGE_COMP_NAME = 'OnlyImage'
 export const VIDEO_COMP_NAME = 'MyComponent'
+export const VIDEO2_COMP_NAME = 'MyVideo2'
 export const SERVE_URL = 'http//:localhost:3000'
 
 export const videoCompSchema = z.object({

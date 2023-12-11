@@ -39,6 +39,11 @@ const Header = () => {
           </Link>
         </li>
         <li style={styles.navItem}>
+          <Link style={styles.navLink} href='/video2'>
+            Video 2
+          </Link>
+        </li>
+        <li style={styles.navItem}>
           <Link style={styles.navLink} href='/image'>
             Image
           </Link>

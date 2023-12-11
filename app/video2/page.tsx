@@ -1,16 +1,14 @@
 'use client'
 
-import { RenderVideoControls } from '@/components/RenderVideoControls'
+import { RenderVideo2Controls } from '@/components/RenderVideo2Controls'
 import {
-  DURATION_IN_FRAMES,
   HEIGHT,
   VIDEO_FPS,
   WIDTH,
+  defaultVideo2CompProps,
   defaultVideoCompProps,
   video2CompSchema,
-  videoCompSchema,
 } from '@/libs/types/constants'
-import { VideoComp } from '@/remotion/bundle/MyComp/Video/VideoComp'
 import { Main } from '@/remotion/bundle/MyComp/Video2/Main'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
@@ -37,8 +35,7 @@ const control: React.CSSProperties = {
 }
 
 const Video2: NextPage = () => {
-  const [texts, setTexts] = useState(defaultVideoCompProps.titleTexts)
-  const [color, setColor] = useState(defaultVideoCompProps.titleColor)
+  const [coinRows, setCoinRows] = useState(defaultVideo2CompProps.coinRows)
   const [pageHeading, setPageHeading] = useState(
     defaultVideoCompProps.pageHeading
   )
@@ -47,7 +44,7 @@ const Video2: NextPage = () => {
     return {
       coinRows: [],
     }
-  }, [texts, color, pageHeading])
+  }, [coinRows])
 
   return (
     <div>
@@ -57,7 +54,7 @@ const Video2: NextPage = () => {
           <Player
             component={Main}
             inputProps={inputProps}
-            durationInFrames={DURATION_IN_FRAMES}
+            durationInFrames={420}
             fps={VIDEO_FPS}
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
@@ -67,15 +64,13 @@ const Video2: NextPage = () => {
           />
         </div>
         <div style={control}>
-          {/* <RenderVideoControls
-            texts={texts}
-            setTexts={setTexts}
+          <RenderVideo2Controls
+            coinRows={coinRows}
+            setCoinRows={setCoinRows}
             inputProps={inputProps}
-            color={color}
-            setColor={setColor}
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
-          /> */}
+          />
         </div>
       </div>
     </div>
