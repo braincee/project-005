@@ -1,4 +1,4 @@
-import { useVideoConfig } from 'remotion'
+import { AbsoluteFill, useVideoConfig } from 'remotion'
 import { CoinRow } from './CoinRow'
 import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
 import { z } from 'zod'
@@ -10,7 +10,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
   const { width, height } = useVideoConfig()
   console.log(coinRows)
   return (
-    <main
+    <AbsoluteFill
       style={{
         width: width,
         height: height,
@@ -42,6 +42,6 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
           />
         ))}
       </div>
-    </main>
+    </AbsoluteFill>
   )
 }

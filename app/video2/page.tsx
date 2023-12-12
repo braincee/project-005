@@ -59,7 +59,6 @@ const Video2: NextPage = () => {
             compositionWidth={WIDTH}
             style={player}
             controls={true}
-            loop={true}
           />
         </div>
         <div style={control}>
