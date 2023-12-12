@@ -30,7 +30,7 @@ const textarea: React.CSSProperties = {
   fontSize: 14,
 }
 
-const select: React.CSSProperties = {
+export const select: React.CSSProperties = {
   resize: 'none',
   lineHeight: 1.7,
   display: 'block',

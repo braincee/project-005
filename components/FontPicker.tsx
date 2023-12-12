@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { top25Fonts } from './top25Fonts'
+import { select } from './RenderVideo2Controls'
 
 export const FontPicker: React.FC<{
   setMyFont: React.Dispatch<React.SetStateAction<any>>
@@ -14,28 +15,13 @@ export const FontPicker: React.FC<{
       const loaded = await fonts.load()
       loaded.loadFont
       setMyFont(loaded.fontFamily)
-      // Load the font itself
-      // loaded.loadFont
-      // // Or get metadata about the font
-      // const info = loaded.getInfo()
-      // const styles = Object.keys(info.fonts)
-      // console.log('Font', info.fontFamily, ' Styles', styles)
-      // for (const style of styles) {
-      //   const weightObject = info.fonts[style as keyof typeof info.fonts]
-      //   const weights = Object.keys(weightObject)
-      //   console.log('- Style', style, 'supports weights', weights)
-      //   // for (const weight of weights) {
-      //   //   const scripts = Object.keys(weightObject[weight])
-      //   //   console.log('-- Weight', weight, 'supports scripts', scripts)
-      //   // }
-      // }
     },
     [newFonts]
   )
 
   return (
     <div>
-      <select onChange={onChange}>
+      <select style={select} onChange={onChange}>
         {newFonts.map((f) => {
           return (
             <option key={f.family} value={f.family}>
