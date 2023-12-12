@@ -34,6 +34,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
       >
         {coinRows?.map((coinRow: z.infer<typeof coinRowSchema>) => (
           <CoinRow
+            key={coinRow.name}
             imageUrl={coinRow.imageUrl}
             name={coinRow.name}
             value={coinRow.value}
