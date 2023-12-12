@@ -12,7 +12,7 @@ import { z } from 'zod'
 const container: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-eve',
+  justifyContent: 'space-between',
   padding: '0 150px',
   gap: 100,
   width: '100%',
@@ -72,7 +72,7 @@ export const CoinRow = ({
 
   const test = currentTextIndex % 2 === 0 ? `${change}%` : value.toString()
 
-  console.log(textInterval, currentTextIndex)
+  console.log(textInterval, currentTextIndex, test)
 
   return (
     <div style={container}>
@@ -90,7 +90,6 @@ export const CoinRow = ({
         <span
           style={{
             fontSize: '60px',
-
             display: 'flex',
             justifyContent: 'flex-end',
             opacity,
