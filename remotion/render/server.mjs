@@ -74,7 +74,6 @@ app.post('/api/video2', async (req, res) => {
     codec: 'h264',
     outputLocation: `out/${id}.mp4`,
     inputProps,
-    concurrency: 2,
     onProgress,
   })
 

@@ -72,8 +72,6 @@ export const CoinRow = ({
 
   const test = currentTextIndex % 2 === 0 ? `${change}%` : value.toString()
 
-  console.log(textInterval, currentTextIndex, test)
-
   return (
     <div style={container}>
       <div style={{ display: 'flex', gap: '100px', alignItems: 'center' }}>

@@ -8,7 +8,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
   coinRows,
 }) => {
   const { width, height } = useVideoConfig()
-  console.log(coinRows)
+
   return (
     <AbsoluteFill
       style={{
