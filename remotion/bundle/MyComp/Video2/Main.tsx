@@ -6,6 +6,7 @@ import { Heading } from './Heading'
 
 export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
   coinRows,
+  font,
 }) => {
   const { width, height } = useVideoConfig()
 
@@ -19,6 +20,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
         flexDirection: 'column',
         color: '#fff',
         paddingTop: '120px',
+        fontFamily: font,
       }}
     >
       <p style={{ fontStyle: 'italic', fontSize: '40px', textAlign: 'center' }}>

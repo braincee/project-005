@@ -70,7 +70,8 @@ export const CoinRow = ({
     extrapolateRight: 'clamp',
   })
 
-  const test = currentTextIndex % 2 === 0 ? `${change}%` : value.toString()
+  const valueChange =
+    currentTextIndex % 2 === 0 ? `${change}%` : value.toString()
 
   return (
     <div style={container}>
@@ -94,7 +95,7 @@ export const CoinRow = ({
             transform: `scale(${scale})`,
           }}
         >
-          {test}
+          {valueChange}
         </span>
 
         {direction === 'down' ? (
