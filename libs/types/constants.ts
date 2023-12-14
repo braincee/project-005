@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { zColor } from '@remotion/zod-types'
 import { fontFamily } from '@remotion/google-fonts/ChakraPetch'
-import { staticFile } from 'remotion'
 
 export const IMAGE_COMP_NAME = 'OnlyImage'
 export const VIDEO_COMP_NAME = 'MyComponent'
@@ -50,15 +49,6 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
       title: 'The fourth slide news title',
       text: ['first sentence', 'second sentence'],
     },
-    {
-      title: 'The fifth slide news title',
-      text: ['first sentence', 'second sentence'],
-    },
-    // 'Balancer Exploit Results in $900K stolen from LPs',
-    // 'The Team warned about the bug 5 days prior',
-    // 'Record 1 million ETH burned since the start of this year',
-    // 'Uniswap fees alone made for 50% of the burn',
-    // 'Grayscale wins against the sec in court',
   ],
   titleColor: '#ffff',
   pageHeading: 'Remotion Video',

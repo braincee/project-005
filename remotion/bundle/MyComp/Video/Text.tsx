@@ -1,9 +1,19 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 import { z } from 'zod'
-import { videoCompSchema } from '@/libs/types/constants'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { zColor } from '@remotion/zod-types'
 
-export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
+const myTextSchema = z.object({
+  titleTexts: z.array(
+    z.object({
+      title: z.string(),
+      text: z.array(z.string()),
+    })
+  ),
+  titleColor: zColor(),
+})
+
+export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
   titleTexts,
   titleColor,
 }) => {
@@ -16,28 +26,17 @@ export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
 
   const interval = textInterval / (titleTexts[currentTextIndex].text.length + 1)
 
-  const textIndex = Math.floor(frame / interval) % 3
+  const textIndex =
+    Math.floor(frame / interval) %
+    (titleTexts[currentTextIndex].text.length + 1)
 
   const translateYX = interpolate(
     frame,
     [
-      currentTextIndex * textInterval + 10,
-      currentTextIndex * textInterval + 20,
+      Math.floor(frame / interval) * interval,
+      Math.floor(frame / interval) * interval + 20,
     ],
     [400, 0],
-    {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp',
-    }
-  )
-
-  const opacity = interpolate(
-    frame,
-    [
-      currentTextIndex * textInterval + 10,
-      currentTextIndex * textInterval + 20,
-    ],
-    [0, 1],
     {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
@@ -47,10 +46,23 @@ export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
   const translateXY = interpolate(
     frame,
     [
-      (currentTextIndex + 1) * textInterval - 30,
-      (currentTextIndex + 1) * textInterval,
+      (Math.floor(frame / interval) + 1) * interval - 20,
+      (Math.floor(frame / interval) + 1) * interval,
     ],
     [0, 1080],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    }
+  )
+
+  const opacity = interpolate(
+    frame,
+    [
+      Math.floor(frame / interval) * interval - 5,
+      Math.floor(frame / interval) * interval + 10,
+    ],
+    [0, 1],
     {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
@@ -60,10 +72,10 @@ export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
   const translateX = interpolate(
     frame,
     [
-      currentTextIndex * textInterval - 10,
-      currentTextIndex * textInterval + 20,
-      (currentTextIndex + 1) * textInterval - 30,
-      (currentTextIndex + 1) * textInterval,
+      Math.floor(frame / interval) * interval - 5,
+      Math.floor(frame / interval) * interval + 10,
+      (Math.floor(frame / interval) + 1) * interval - 20,
+      (Math.floor(frame / interval) + 1) * interval,
     ],
     [-1080, 0, 0, 1080],
     {
@@ -73,12 +85,11 @@ export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
   )
 
   const transform =
-    frame <= currentTextIndex * textInterval + 30
+    frame <= Math.floor(frame / interval) * interval + 10
       ? `translateY(${translateYX}px)`
       : `translateX(${translateXY}px)`
 
-  console.log(textInterval, currentTextIndex)
-  console.log(interval, textIndex)
+  console.log(transform, frame)
 
   const test = (item: any) => {
     if (textIndex === 0) {
@@ -91,7 +102,7 @@ export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
             width: '70%',
             fontFamily: 'Agbalumo',
             transform: transform,
-            // opacity,
+            opacity,
           }}
         >
           {item.title}
@@ -115,9 +126,9 @@ export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
     }
   }
 
-  useEffect(() => {
+  useMemo(() => {
     test(titleTexts[currentTextIndex])
-  }, [currentTextIndex, textIndex])
+  }, [currentTextIndex, textIndex, frame])
 
   return (
     <div

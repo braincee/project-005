@@ -66,7 +66,7 @@ const Video: NextPage = () => {
           />
         </div>
         <div style={control}>
-          {/* <RenderVideoControls
+          <RenderVideoControls
             texts={texts}
             setTexts={setTexts}
             inputProps={inputProps}
@@ -74,7 +74,7 @@ const Video: NextPage = () => {
             setColor={setColor}
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
-          /> */}
+          />
         </div>
       </div>
     </div>
