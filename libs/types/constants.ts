@@ -1,14 +1,12 @@
 import { z } from 'zod'
 import { zColor } from '@remotion/zod-types'
 import { fontFamily } from '@remotion/google-fonts/ChakraPetch'
-import { staticFile } from 'remotion';
+import { staticFile } from 'remotion'
 
 export const IMAGE_COMP_NAME = 'OnlyImage'
 export const VIDEO_COMP_NAME = 'MyComponent'
 export const VIDEO2_COMP_NAME = 'MyVideo2'
 export const SERVE_URL = 'http//:localhost:3000'
-
-const font = staticFile('/Handel Gothic.ttf')
 
 export const videoCompSchema = z.object({
   titleTexts: z.array(z.string()),
@@ -72,7 +70,6 @@ export const imageCompSchema = z.object({
   titleTexts: z.string(),
   titleColor: zColor(),
   pageHeading: z.string(),
-  font: z.string(),
 })
 
 export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
@@ -80,7 +77,6 @@ export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
   has doubled in value since mid June ahead of momentous event`,
   titleColor: '#000',
   pageHeading: 'Remotion Image',
-  font: font,
 }
 
 export const DURATION_IN_FRAMES = 810
