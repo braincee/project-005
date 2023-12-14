@@ -1,21 +1,22 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 import { z } from 'zod'
-import { zColor } from '@remotion/zod-types'
+import { videoCompSchema } from '@/libs/types/constants'
+import { useEffect, useMemo, useState } from 'react'
 
-export const myTextSchema = z.object({
-  titleTexts: z.array(z.string()),
-  titleColor: zColor(),
-})
-
-export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
+export const Text: React.FC<z.infer<typeof videoCompSchema>> = ({
   titleTexts,
   titleColor,
 }) => {
   const videoConfig = useVideoConfig()
   const frame = useCurrentFrame()
+  const [myResult, setMyresult] = useState<React.ReactElement>()
 
   const textInterval = videoConfig.durationInFrames / titleTexts.length
   const currentTextIndex = Math.floor(frame / textInterval)
+
+  const interval = textInterval / (titleTexts[currentTextIndex].text.length + 1)
+
+  const textIndex = Math.floor(frame / interval) % 3
 
   const translateYX = interpolate(
     frame,
@@ -76,6 +77,48 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
       ? `translateY(${translateYX}px)`
       : `translateX(${translateXY}px)`
 
+  console.log(textInterval, currentTextIndex)
+  console.log(interval, textIndex)
+
+  const test = (item: any) => {
+    if (textIndex === 0) {
+      setMyresult(
+        <p
+          style={{
+            color: titleColor,
+            fontSize: '70px',
+            textAlign: 'center',
+            width: '70%',
+            fontFamily: 'Agbalumo',
+            transform: transform,
+            // opacity,
+          }}
+        >
+          {item.title}
+        </p>
+      )
+    } else {
+      setMyresult(
+        <p
+          style={{
+            color: titleColor,
+            fontSize: '70px',
+            textAlign: 'center',
+            width: '70%',
+            fontFamily: 'Agbalumo',
+            transform: `translate(${translateX}px)`,
+          }}
+        >
+          {item.text[textIndex - 1]}
+        </p>
+      )
+    }
+  }
+
+  useEffect(() => {
+    test(titleTexts[currentTextIndex])
+  }, [currentTextIndex, textIndex])
+
   return (
     <div
       id='myText'
@@ -83,10 +126,11 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         position: 'absolute',
         bottom: '30%',
         display: 'flex',
+        width: '100%',
         justifyContent: 'center',
       }}
     >
-      {currentTextIndex % 2 === 0 ? (
+      {/* {currentTextIndex % 2 === 0 ? (
         <p
           style={{
             color: titleColor,
@@ -113,7 +157,8 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         >
           {titleTexts[currentTextIndex].toUpperCase()}
         </p>
-      )}
+      )} */}
+      {myResult}
     </div>
   )
 }

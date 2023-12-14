@@ -63,11 +63,10 @@ const Video: NextPage = () => {
             compositionWidth={WIDTH}
             style={player}
             controls={true}
-            loop={true}
           />
         </div>
         <div style={control}>
-          <RenderVideoControls
+          {/* <RenderVideoControls
             texts={texts}
             setTexts={setTexts}
             inputProps={inputProps}
@@ -75,7 +74,7 @@ const Video: NextPage = () => {
             setColor={setColor}
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
-          />
+          /> */}
         </div>
       </div>
     </div>

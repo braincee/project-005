@@ -26,7 +26,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
           fontSize: '80px',
           textAlign: 'center',
           width: '80%',
-          fontFamily: 'Agbalumo',
         }}
       >
         {titleTexts}
