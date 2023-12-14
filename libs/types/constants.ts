@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { zColor } from '@remotion/zod-types'
 import { fontFamily } from '@remotion/google-fonts/ChakraPetch'
-import { staticFile } from 'remotion'
 
 export const IMAGE_COMP_NAME = 'OnlyImage'
 export const VIDEO_COMP_NAME = 'MyComponent'
