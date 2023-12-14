@@ -1,7 +1,7 @@
 import { useCurrentFrame, useVideoConfig, staticFile } from 'remotion'
 import { Img } from 'remotion'
 
-const logoPaths = ['logo.png', 'logo_grayscale.webp']
+const logoPaths = ['logo.png', 'logo_grayscale.png']
 
 export const LogoSequence = () => {
   const videoConfig = useVideoConfig()
