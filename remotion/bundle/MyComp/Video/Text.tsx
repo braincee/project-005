@@ -36,7 +36,7 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
       Math.floor(frame / interval) * interval,
       Math.floor(frame / interval) * interval + 20,
     ],
-    [400, 0],
+    [800, 0],
     {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
