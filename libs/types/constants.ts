@@ -88,8 +88,7 @@ export const imageCompSchema = z.object({
 })
 
 export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
-  titleTexts: `Ethereum price shakeup predicted amid Merge confusion Cryptocurrency 
-  has doubled in value since mid June ahead of momentous event`,
+  titleTexts: `Ethereum and cryptocurrency price shakeup predicted amid Merge`,
   titleColor: '#000',
   pageHeading: 'Remotion Image',
 }
