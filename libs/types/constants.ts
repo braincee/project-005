@@ -41,14 +41,6 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
       title: 'The second slide news title',
       text: ['first sentence', 'second sentence'],
     },
-    {
-      title: 'The third slide news title',
-      text: ['first sentence', 'second sentence'],
-    },
-    {
-      title: 'The fourth slide news title',
-      text: ['first sentence', 'second sentence'],
-    },
   ],
   titleColor: '#ffff',
   pageHeading: 'Remotion Video',
