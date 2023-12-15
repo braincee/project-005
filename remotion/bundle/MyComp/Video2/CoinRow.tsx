@@ -12,9 +12,9 @@ import { z } from 'zod'
 const container: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
+
   padding: '0 150px',
-  gap: 100,
+  gap: 200,
   width: '100%',
   color: '#fff',
 }
@@ -54,15 +54,16 @@ export const CoinRow = ({
     }
   )
 
-  const scale = spring({
-    fps,
-    frame: frame,
-    from: 0.8,
-    to: 1,
-    config: {
-      damping: 200,
-    },
-  })
+  const scale = interpolate(
+    frame,
+    [
+      currentTextIndex * textInterval,
+      currentTextIndex * textInterval + 10,
+      (currentTextIndex + 1) * textInterval - 10,
+      (currentTextIndex + 1) * textInterval,
+    ],
+    [0.8, 1, 1, 0]
+  )
 
   const scale2 = spring({
     fps,
@@ -90,23 +91,24 @@ export const CoinRow = ({
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-between',
           alignItems: 'center',
-          gap: 20,
+          width: '100%',
+          gap: 10,
         }}
       >
         <span
           style={{
-            fontSize: '50px',
             display: 'flex',
             justifyContent: 'flex-start',
+            fontSize: '50px',
             opacity,
             transform: `scale(${scale})`,
+            inlineSize: '180px',
+            overflowWrap: 'break-word',
           }}
         >
           {valueChange}
         </span>
-
         {direction === 'down' ? (
           <Img
             style={{ opacity: opacity2, transform: `scale(${scale2})` }}

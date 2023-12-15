@@ -9,7 +9,7 @@ export const myTextSchema = z.object({
 
 const waitForFont = delayRender()
 const font = new FontFace(
-  `Handel Gothic`,
+  'Handel Gothic',
   `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
 )
 
@@ -31,15 +31,14 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         position: 'absolute',
         bottom: '10%',
         display: 'flex',
-        justifyContent: 'left',
+        justifyContent: 'center',
         width: '100%',
-        paddingLeft: '30px',
       }}
     >
       <p
         style={{
           color: titleColor,
-          fontSize: '120px',
+          fontSize: '80px',
           textAlign: 'center',
           width: '80%',
           fontFamily: font.family,
