@@ -85,20 +85,21 @@ export const CoinRow = ({
     <div style={container}>
       <div style={{ display: 'flex', gap: '100px', alignItems: 'center' }}>
         <Img height={100} width={100} src={staticFile(imageUrl)} />
-        <p style={{ fontSize: '100px' }}>{name}</p>
+        <p style={{ fontSize: '70px' }}>{name}</p>
       </div>
       <div
         style={{
           display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
           gap: 20,
         }}
       >
         <span
           style={{
-            fontSize: '60px',
+            fontSize: '50px',
             display: 'flex',
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             opacity,
             transform: `scale(${scale})`,
           }}
