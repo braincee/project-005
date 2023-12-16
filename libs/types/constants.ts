@@ -1,11 +1,11 @@
 import { z } from 'zod'
 import { zColor } from '@remotion/zod-types'
-import { fontFamily } from '@remotion/google-fonts/ChakraPetch'
 
 export const IMAGE_COMP_NAME = 'OnlyImage'
 export const VIDEO_COMP_NAME = 'MyComponent'
 export const VIDEO2_COMP_NAME = 'MyVideo2'
 export const SERVE_URL = 'http//:localhost:3000'
+
 
 export const videoCompSchema = z.object({
   titleTexts: z.array(
@@ -28,7 +28,6 @@ export const coinRowSchema = z.object({
 
 export const video2CompSchema = z.object({
   coinRows: z.array(coinRowSchema),
-  font: z.string(),
 })
 
 export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
@@ -70,7 +69,6 @@ export const defaultVideo2CompProps: z.infer<typeof video2CompSchema> = {
       direction: 'down',
     },
   ],
-  font: fontFamily,
 }
 
 export const imageCompSchema = z.object({

@@ -6,13 +6,14 @@ import {
   staticFile,
   useCurrentFrame,
   useVideoConfig,
+  delayRender,
+  continueRender,
 } from 'remotion'
 import { z } from 'zod'
 
 const container: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-
   padding: '0 150px',
   gap: 200,
   width: '100%',
@@ -84,9 +85,9 @@ export const CoinRow = ({
 
   return (
     <div style={container}>
-      <div style={{ display: 'flex', gap: '100px', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: '100px', alignItems: 'center'}}>
         <Img height={100} width={100} src={staticFile(imageUrl)} />
-        <p style={{ fontSize: '70px' }}>{name}</p>
+        <p style={{ fontSize: '70px', }}>{name}</p>
       </div>
       <div
         style={{

@@ -1,4 +1,4 @@
-import { AbsoluteFill, staticFile, useVideoConfig, Img } from 'remotion'
+import { AbsoluteFill, staticFile, useVideoConfig, Img, delayRender, continueRender } from 'remotion'
 import { CoinRow } from './CoinRow'
 import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
 import { z } from 'zod'
@@ -7,9 +7,22 @@ import { Heading } from './Heading'
 
 export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
   coinRows,
-  font,
 }) => {
   const { width, height } = useVideoConfig()
+
+const waitForFont = delayRender()
+const font = new FontFace(
+  'Handel Gothic',
+  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
+)
+
+font
+  .load()
+  .then(() => {
+    document.fonts.add(font)
+    continueRender(waitForFont)
+  })
+  .catch((err) => console.log('Error loading font', err))
 
   return (
     <AbsoluteFill
@@ -21,13 +34,12 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
         flexDirection: 'column',
         color: '#fff',
         paddingTop: '120px',
-        fontFamily: font,
+        fontFamily: font.family,
       }}
     >
       <div style={{ textAlign: 'center' }}>
         <Img
-         width='200px'
-         height='50px'
+         height='25px'
          src={staticFile('logo_grayscale.png')} 
         />
       </div>

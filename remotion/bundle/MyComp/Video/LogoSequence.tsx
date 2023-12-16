@@ -27,8 +27,8 @@ export const LogoSequence = () => {
           key={index}
           src={staticFile(logoPaths[index % 2])}
           style={{
-            width: '200px',
-            height: '50px',
+            width: '100%',
+            height: '25px',
           }}
         />
       ))}

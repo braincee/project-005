@@ -1,8 +1,7 @@
-import { interpolate, useCurrentFrame, useVideoConfig  } from 'remotion'
+import { interpolate, useCurrentFrame, useVideoConfig, delayRender, continueRender, staticFile  } from 'remotion'
 import { z } from 'zod'
 import { useMemo, useState } from 'react'
 import { zColor } from '@remotion/zod-types'
-import '../../../../app/globals.css'
 
 const myTextSchema = z.object({
   titleTexts: z.array(
@@ -13,6 +12,20 @@ const myTextSchema = z.object({
   ),
   titleColor: zColor(),
 })
+
+const waitForFont = delayRender()
+const font = new FontFace(
+  'Handel Gothic',
+  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
+)
+
+font
+  .load()
+  .then(() => {
+    document.fonts.add(font)
+    continueRender(waitForFont)
+  })
+  .catch((err) => console.log('Error loading font', err))
 
 export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
   titleTexts,
@@ -101,9 +114,9 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             fontSize: '70px',
             textAlign: 'center',
             width: '70%',
-            fontFamily: 'Agbalumo',
             transform: transform,
             opacity,
+            fontFamily: font.family,
           }}
         >
           {item.title}
@@ -117,8 +130,8 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             fontSize: '70px',
             textAlign: 'center',
             width: '70%',
-            fontFamily: 'Agbalumo',
             transform: `translate(${translateX}px)`,
+            fontFamily: font.family,
           }}
         >
           {item.text[textIndex - 1]}
@@ -140,7 +153,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         display: 'flex',
         width: '100%',
         justifyContent: 'center',
-        fontFamily: 'Agbalumo',
       }}
     >
       {/* {currentTextIndex % 2 === 0 ? (
