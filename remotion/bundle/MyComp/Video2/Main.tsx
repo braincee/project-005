@@ -1,11 +1,4 @@
-import {
-  AbsoluteFill,
-  staticFile,
-  useVideoConfig,
-  Img,
-  delayRender,
-  continueRender,
-} from 'remotion'
+import { AbsoluteFill, staticFile, useVideoConfig, Img } from 'remotion'
 import { CoinRow } from './CoinRow'
 import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
 import { z } from 'zod'
