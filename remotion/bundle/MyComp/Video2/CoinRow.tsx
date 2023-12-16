@@ -12,7 +12,6 @@ import { z } from 'zod'
 const container: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-
   padding: '0 150px',
   gap: 200,
   width: '100%',
@@ -33,6 +32,7 @@ export const CoinRow = ({
   value,
   change,
   direction,
+  fontFamily,
 }: z.infer<typeof coinRowSchema>) => {
   const frame = useCurrentFrame()
   const { durationInFrames, fps } = useVideoConfig()
@@ -91,7 +91,7 @@ export const CoinRow = ({
           width={100}
           src={staticFile(imageUrl)}
         />
-        <p style={{ fontSize: '70px' }}>{name}</p>
+        <p style={{ fontSize: '70px', fontFamily }}>{name}</p>
       </div>
       <div
         style={{
@@ -110,6 +110,7 @@ export const CoinRow = ({
             transform: `scale(${scale})`,
             inlineSize: '180px',
             overflowWrap: 'break-word',
+            fontFamily,
           }}
         >
           {valueChange}

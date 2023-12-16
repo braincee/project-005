@@ -1,4 +1,11 @@
-import { AbsoluteFill, staticFile, useVideoConfig, Img } from 'remotion'
+import {
+  AbsoluteFill,
+  staticFile,
+  useVideoConfig,
+  Img,
+  delayRender,
+  continueRender,
+} from 'remotion'
 import { CoinRow } from './CoinRow'
 import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
 import { z } from 'zod'
@@ -47,6 +54,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
             value={coinRow.value}
             change={coinRow.change}
             direction={coinRow.direction}
+            fontFamily={font}
           />
         ))}
       </div>
