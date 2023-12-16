@@ -29,18 +29,17 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
     <div
       style={{
         position: 'absolute',
-        bottom: '10%',
+        top: '42%',
         display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
+        justifyContent: 'flex-start',
+        width: '85%',
+        paddingLeft: '10%',
       }}
     >
       <p
         style={{
           color: titleColor,
-          fontSize: '80px',
-          textAlign: 'center',
-          width: '80%',
+          fontSize: '100px',
           fontFamily: font.family,
         }}
       >

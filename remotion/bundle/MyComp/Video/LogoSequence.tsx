@@ -1,4 +1,9 @@
-import { useCurrentFrame, useVideoConfig, staticFile } from 'remotion'
+import {
+  useCurrentFrame,
+  useVideoConfig,
+  staticFile,
+  AbsoluteFill,
+} from 'remotion'
 import { Img } from 'remotion'
 
 const logoPaths = ['logo.png', 'logo_grayscale.png']
@@ -17,20 +22,14 @@ export const LogoSequence = () => {
         display: 'flex',
         gap: '20px',
         position: 'absolute',
-        bottom: '8%',
+        bottom: '5%',
         left: xPos,
         transform: 'translateX(-50%)',
+        height: '40px',
       }}
     >
       {[...Array(numDuplicates)].map((_, index) => (
-        <Img
-          key={index}
-          src={staticFile(logoPaths[index % 2])}
-          style={{
-            width: '200px',
-            height: '50px',
-          }}
-        />
+        <Img placeholder='Img' src={staticFile(logoPaths[index % 2])} />
       ))}
     </div>
   )

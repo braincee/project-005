@@ -4,7 +4,6 @@ import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
 import { z } from 'zod'
 import { Heading } from './Heading'
 
-
 export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
   coinRows,
   font,
@@ -26,9 +25,10 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
     >
       <div style={{ textAlign: 'center' }}>
         <Img
-         width='200px'
-         height='50px'
-         src={staticFile('logo_grayscale.png')} 
+          placeholder='Img'
+          alt='Block Talk'
+          src={staticFile('logo_grayscale.png')}
+          style={{ height: '40px' }}
         />
       </div>
       <Heading titleTexts='Price Action of the day' titleColor='#fff' />

@@ -1,4 +1,4 @@
-import { interpolate, useCurrentFrame, useVideoConfig  } from 'remotion'
+import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 import { z } from 'zod'
 import { useMemo, useState } from 'react'
 import { zColor } from '@remotion/zod-types'
@@ -34,10 +34,10 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
   const translateYX = interpolate(
     frame,
     [
-      Math.floor(frame / interval) * interval,
-      Math.floor(frame / interval) * interval + 20,
+      Math.floor(frame / interval) * interval - 10,
+      Math.floor(frame / interval) * interval + 10,
     ],
-    [800, 0],
+    [1920, 0],
     {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
@@ -73,7 +73,7 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
   const translateX = interpolate(
     frame,
     [
-      Math.floor(frame / interval) * interval - 5,
+      Math.floor(frame / interval) * interval - 10,
       Math.floor(frame / interval) * interval + 10,
       (Math.floor(frame / interval) + 1) * interval - 20,
       (Math.floor(frame / interval) + 1) * interval,
@@ -103,7 +103,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             width: '70%',
             fontFamily: 'Agbalumo',
             transform: transform,
-            opacity,
           }}
         >
           {item.title}
