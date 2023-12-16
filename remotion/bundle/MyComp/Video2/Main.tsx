@@ -35,7 +35,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
           placeholder='Img'
           alt='Block Talk'
           src={staticFile('logo_grayscale.png')}
-          style={{ height: '40px' }}
+          style={{ height: 32, width: 200 }}
         />
       </div>
       <Heading titleTexts='Price Action of the day' titleColor='#fff' />

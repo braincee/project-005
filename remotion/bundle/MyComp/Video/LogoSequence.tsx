@@ -22,14 +22,18 @@ export const LogoSequence = () => {
         display: 'flex',
         gap: '20px',
         position: 'absolute',
-        bottom: '5%',
+        bottom: '8%',
         left: xPos,
         transform: 'translateX(-50%)',
-        height: '40px',
       }}
     >
       {[...Array(numDuplicates)].map((_, index) => (
-        <Img placeholder='Img' src={staticFile(logoPaths[index % 2])} />
+        <Img
+          placeholder='Img'
+          height={32}
+          width={200}
+          src={staticFile(logoPaths[index % 2])}
+        />
       ))}
     </div>
   )
