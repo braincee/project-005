@@ -7,7 +7,6 @@ export const env = createEnv({
     RENDER_URL: z.string(),
   },
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
     NEXT_PUBLIC_RENDER_URL: z.string(),
   },
   runtimeEnv: {

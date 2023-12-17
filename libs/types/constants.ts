@@ -5,7 +5,6 @@ import { continueRender, delayRender, staticFile } from 'remotion'
 export const IMAGE_COMP_NAME = 'OnlyImage'
 export const VIDEO_COMP_NAME = 'MyComponent'
 export const VIDEO2_COMP_NAME = 'MyVideo2'
-export const SERVE_URL = 'http//:localhost:3000'
 
 const waitForFont = delayRender()
 const font = new FontFace(
@@ -109,7 +108,8 @@ export const imageCompSchema = z.object({
 })
 
 export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
-  titleTexts: `Ethereum and cryptocurrency price shakeup predicted amid Merge`,
+  titleTexts:
+    'Coinbase beats all expectations with $674M in revenue for Q3 2023',
   titleColor: '#000',
   pageHeading: 'Remotion Image',
 }

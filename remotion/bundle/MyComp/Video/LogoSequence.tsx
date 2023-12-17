@@ -1,9 +1,4 @@
-import {
-  useCurrentFrame,
-  useVideoConfig,
-  staticFile,
-  AbsoluteFill,
-} from 'remotion'
+import { useCurrentFrame, useVideoConfig, staticFile } from 'remotion'
 import { Img } from 'remotion'
 
 const logoPaths = ['logo.png', 'logo_grayscale.png']

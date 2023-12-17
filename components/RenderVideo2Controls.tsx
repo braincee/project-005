@@ -13,7 +13,6 @@ import { ErrorComp } from './Error'
 import { useVideo2Rendering } from '@/libs/helpers/use-video2-rendering'
 import { Input } from './Input'
 import { FontPicker } from './FontPicker'
-import { useState } from 'react'
 import { loadFont } from '@remotion/google-fonts/ChakraPetch'
 
 const { fontFamily } = loadFont()

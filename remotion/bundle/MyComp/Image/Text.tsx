@@ -32,7 +32,7 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         top: '42%',
         display: 'flex',
         justifyContent: 'flex-start',
-        width: '85%',
+        width: '80%',
         paddingLeft: '10%',
       }}
     >
