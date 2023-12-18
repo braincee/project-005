@@ -135,7 +135,7 @@ export const RenderStoryControls: React.FC<{
         <Stack sx={{ width: '100%' }}>
           <Accordion>
             <AccordionSummary>Page Heading</AccordionSummary>
-            <AccordionDetails sx={{ py: 1 }}>
+            <AccordionDetails sx={{ p: 1 }}>
               <Input
                 value={pageHeading}
                 onChange={(e) => setPageHeading(e.target.value)}
@@ -146,7 +146,7 @@ export const RenderStoryControls: React.FC<{
             <Stack key={index}>
               <Accordion>
                 <AccordionSummary>{`CoinRow${index + 1}`}</AccordionSummary>
-                <AccordionDetails sx={{ py: 1 }}>
+                <AccordionDetails sx={{ p: 1 }}>
                   <Stack>
                     <Typography>Name:</Typography>
                     <Input

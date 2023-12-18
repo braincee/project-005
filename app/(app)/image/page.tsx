@@ -1,5 +1,6 @@
 'use client'
 
+import { RenderImageControls } from '@/components/RenderImageControls'
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -9,12 +10,11 @@ import {
   imageCompSchema,
 } from '@/libs/types/constants'
 import { ImageComp } from '@/remotion/bundle/Comps/Image/ImageComp'
-import { Box, Typography, Stack } from '@mui/joy'
+import { Box, Typography, Stack, Grid } from '@mui/joy'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
-
 
 // const control: React.CSSProperties = {
 //   width: '35%',
@@ -37,17 +37,18 @@ const Image: NextPage = () => {
   }, [text, color, pageHeading])
 
   return (
-    <Box>
-      <Typography  level="h1" sx={{ textAlign: 'center' }}>{pageHeading}</Typography>
-        <Stack sx={{
-           overflow: 'hidden',
-           maxHeight: '80vh',
-           width: '65%',
-           display: 'flex',
-           flexDirection: 'column',
-           justifyContent: 'center',
-           alignItems: 'center',
-        }}>
+    <Box sx={{ width: '100%', height: '100%' }}>
+      <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
+        {pageHeading}
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid
+          sx={{
+            overflow: { md: 'hidden' },
+            width: { md: '65%', xs: '100%' },
+            height: '85vh',
+          }}
+        >
           <Player
             component={ImageComp}
             inputProps={inputProps}
@@ -56,11 +57,19 @@ const Image: NextPage = () => {
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
             controls={true}
+            style={{ width: '100%', height: '100%' }}
           />
-        </Stack>
-        {/*
-        <div style={control}>
+        </Grid>
 
+        <Grid
+          sx={{
+            display: 'grid',
+            width: { md: '35%', xs: '100%' },
+            height: { xs: '100%', md: '85vh' },
+            alignContent: { md: 'center' },
+            justifyContent: { xs: 'center' },
+          }}
+        >
           <RenderImageControls
             text={text}
             setText={setText}
@@ -70,9 +79,9 @@ const Image: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
-        </div> */}
-      </Box>
-
+        </Grid>
+      </Grid>
+    </Box>
   )
 }
 

@@ -12,34 +12,35 @@ import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
-import { continueRender, delayRender, staticFile } from 'remotion'
 import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
-import { Box, Stack, Typography } from '@mui/joy'
-
+import { Box, Grid, Typography } from '@mui/joy'
+import { RenderStoryControls } from '@/components/RenderStoryControls'
 
 const Video2: NextPage = () => {
   const [coinRows, setCoinRows] = useState(defaultStoryCompProps.coinRows)
   const [pageHeading, setPageHeading] = useState(
-    defaultVideoCompProps.pageHeading
+    defaultStoryCompProps.pageHeading
   )
   const inputProps: z.infer<typeof storyCompSchema> = useMemo(() => {
     return {
       coinRows,
+      pageHeading,
     }
   }, [coinRows])
 
   return (
-    <Box>
-      <Typography level="h1" sx={{ textAlign: 'center', fontSize: '24px' }}>{pageHeading}</Typography>
-        <Stack sx={{
-           overflow: 'hidden',
-           maxHeight: '90vh',
-           width: '65%',
-           display: 'flex',
-           flexDirection: 'column',
-           justifyContent: 'center',
-           alignItems: 'center',
-        }}>
+    <Box sx={{ width: '100%', height: '100%' }}>
+      <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
+        {pageHeading}
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid
+          sx={{
+            overflow: { md: 'hidden' },
+            width: { md: '65%', xs: '100%' },
+            height: '85vh',
+          }}
+        >
           <Player
             component={StoryComp}
             inputProps={inputProps}
@@ -48,20 +49,27 @@ const Video2: NextPage = () => {
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
             controls={true}
+            style={{ width: '100%', height: '100%' }}
           />
-        </Stack>
-        <Stack sx={{
-            width: '35%',
-            padding: '10px',
-        }}>
-          {/* <RenderStoryControls
+        </Grid>
+        <Grid
+          sx={{
+            display: 'grid',
+            width: { md: '35%', xs: '100%' },
+            height: { xs: '100%', md: '85vh' },
+            alignContent: { md: 'center' },
+            justifyContent: { xs: 'center' },
+          }}
+        >
+          <RenderStoryControls
             coinRows={coinRows}
             setCoinRows={setCoinRows}
             inputProps={inputProps}
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
-          /> */}
-        </Stack> 
+          />
+        </Grid>
+      </Grid>
     </Box>
   )
 }

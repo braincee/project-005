@@ -27,6 +27,7 @@ export const coinRowSchema = z.object({
 
 export const storyCompSchema = z.object({
   coinRows: z.array(coinRowSchema),
+  pageHeading: z.string(),
 })
 
 export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
@@ -85,6 +86,7 @@ export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {
       direction: 'down',
     },
   ],
+  pageHeading: 'Remotion Story',
 }
 
 export const imageCompSchema = z.object({
