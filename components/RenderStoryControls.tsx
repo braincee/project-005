@@ -7,13 +7,15 @@ import {
 import { useStoryRendering } from '@/libs/helpers/use-story-rendering'
 import {
   Box,
-  Dropdown,
   Input,
   Select,
   Stack,
   Typography,
   Option,
   Button,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from '@mui/joy'
 
 export const RenderStoryControls: React.FC<{
@@ -105,18 +107,24 @@ export const RenderStoryControls: React.FC<{
     })
   }
 
-  const handleSelect = (e: any, textIndex: number) => {
-    setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
-      const newCoinRows = prevCoinRows.map(
-        (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
-          if (index === textIndex) {
-            return { ...coinRow, [e.target.name]: e.target.value }
+  const handleSelect = (
+    e: React.SyntheticEvent | null,
+    newValue: string | null,
+    textIndex: number
+  ) => {
+    if (newValue) {
+      setCoinRows((prevCoinRows: z.infer<typeof coinRowSchema>[]) => {
+        const newCoinRows = prevCoinRows.map(
+          (coinRow: z.infer<typeof coinRowSchema>, index: number) => {
+            if (index === textIndex) {
+              return { ...coinRow, ['direction']: newValue }
+            }
+            return coinRow
           }
-          return coinRow
-        }
-      )
-      return newCoinRows
-    })
+        )
+        return newCoinRows
+      })
+    }
   }
 
   return (
@@ -124,70 +132,90 @@ export const RenderStoryControls: React.FC<{
       {state.status === 'init' ||
       state.status === 'invoking' ||
       state.status === 'error' ? (
-        <Stack>
-          <Dropdown text='Heading'>
-            <Input
-              value={pageHeading}
-              onChange={(e) => setPageHeading(e.target.value)}
-            />
-          </Dropdown>
+        <Stack sx={{ width: '100%' }}>
+          <Accordion>
+            <AccordionSummary>Page Heading</AccordionSummary>
+            <AccordionDetails sx={{ py: 1 }}>
+              <Input
+                value={pageHeading}
+                onChange={(e) => setPageHeading(e.target.value)}
+              />
+            </AccordionDetails>
+          </Accordion>
           {coinRows?.map((coinRow, index) => (
             <Stack key={index}>
-              <Dropdown text={`CoinRow${index + 1}`}>
-                <Stack>
-                  <Typography>Name:</Typography>
-                  <Input
-                    name='name'
-                    value={coinRow.name.toUpperCase()}
-                    onChange={(e) => handleNameChange(e, index)}
-                  />
-                </Stack>
+              <Accordion>
+                <AccordionSummary>{`CoinRow${index + 1}`}</AccordionSummary>
+                <AccordionDetails sx={{ py: 1 }}>
+                  <Stack>
+                    <Typography>Name:</Typography>
+                    <Input
+                      name='name'
+                      value={coinRow.name.toUpperCase()}
+                      onChange={(e) => handleNameChange(e, index)}
+                      sx={{ mb: 2 }}
+                    />
+                  </Stack>
 
-                <Stack>
-                  <Typography>Change:</Typography>
-                  <Input
-                    name='change'
-                    value={coinRow.change}
-                    type='number'
-                    onChange={(e) => handleDoubleChange(e, index)}
-                  />
-                </Stack>
+                  <Stack>
+                    <Typography>Change:</Typography>
+                    <Input
+                      name='change'
+                      value={coinRow.change}
+                      type='number'
+                      onChange={(e) => handleDoubleChange(e, index)}
+                      sx={{ mb: 2 }}
+                    />
+                  </Stack>
 
-                <Stack>
-                  <Typography>Value:</Typography>
-                  <Input
-                    name='value'
-                    value={coinRow.value}
-                    type='number'
-                    onChange={(e) => handleValueChange(e, index)}
-                  />
-                </Stack>
+                  <Stack>
+                    <Typography>Value:</Typography>
+                    <Input
+                      name='value'
+                      value={coinRow.value}
+                      type='number'
+                      onChange={(e) => handleValueChange(e, index)}
+                      sx={{ mb: 2 }}
+                    />
+                  </Stack>
 
-                <Stack>
-                  <Typography>Image URL:</Typography>
-                  <input
-                    name='imageUrl'
-                    value={coinRow.imageUrl}
-                    onChange={(e) => handleImageChange(e, index, 'imageUrl')}
-                  />
-                </Stack>
+                  <Stack>
+                    <Typography>Image URL:</Typography>
+                    <Input
+                      name='imageUrl'
+                      value={coinRow.imageUrl}
+                      onChange={(e) => handleImageChange(e, index, 'imageUrl')}
+                      sx={{ mb: 2 }}
+                    />
+                  </Stack>
 
-                <Stack>
-                  <p>Direction:</p>
-                  <Select
-                    name='direction'
-                    value={coinRow.direction}
-                    onChange={(e) => handleSelect(e, index)}
-                  >
-                    <Option value='up'>up</Option>
-                    <Option value='down'>down</Option>
-                  </Select>
-                </Stack>
-              </Dropdown>
+                  <Stack>
+                    <Typography>Direction:</Typography>
+                    <Select
+                      name='direction'
+                      defaultValue={coinRow.direction}
+                      onChange={(e, newValue) =>
+                        handleSelect(e, newValue, index)
+                      }
+                      sx={{ mb: 2 }}
+                    >
+                      <Option value='up'>up</Option>
+                      <Option value='down'>down</Option>
+                    </Select>
+                  </Stack>
+                </AccordionDetails>
+              </Accordion>
             </Stack>
           ))}
 
-          <Stack>
+          <Stack
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              mt: 2,
+            }}
+          >
             <Button
               disabled={state.status === 'invoking'}
               loading={state.status === 'invoking'}

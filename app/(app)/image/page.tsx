@@ -1,5 +1,9 @@
 'use client'
 
+<<<<<<< HEAD
+=======
+import { RenderImageControls } from '@/components/RenderImageControls'
+>>>>>>> 5ddea2dfee328935d7a870b90ff8d6f3dd0ff80f
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -57,8 +61,13 @@ const Image: NextPage = () => {
             compositionWidth={WIDTH}
             controls={true}
           />
+<<<<<<< HEAD
         </Stack>
         {/* <div style={control}>
+=======
+        </div>
+        <div style={control}>
+>>>>>>> 5ddea2dfee328935d7a870b90ff8d6f3dd0ff80f
           <RenderImageControls
             text={text}
             setText={setText}
@@ -68,8 +77,14 @@ const Image: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
+<<<<<<< HEAD
         </div> */}
       </Box>
+=======
+        </div>
+      </div>
+    </div>
+>>>>>>> 5ddea2dfee328935d7a870b90ff8d6f3dd0ff80f
   )
 }
 
