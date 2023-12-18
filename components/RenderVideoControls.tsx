@@ -1,7 +1,16 @@
 import { z } from 'zod'
 import { useVideoRendering } from '@/libs/helpers/use-video-rendering'
 import { VIDEO_COMP_NAME, videoCompSchema } from '@/libs/types/constants'
-import { Box, Dropdown, Input, Stack, Typography, Button } from '@mui/joy'
+import {
+  Box,
+  Input,
+  Stack,
+  Typography,
+  Button,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+} from '@mui/joy'
 import { MyColorPicker } from './MyColorPicker'
 
 const controls: React.CSSProperties = {
@@ -86,49 +95,60 @@ export const RenderVideoControls: React.FC<{
       state.status === 'invoking' ||
       state.status === 'error' ? (
         <Stack>
-          <Dropdown text='Heading'>
-            <Input
-              value={pageHeading}
-              onChange={(e) => setPageHeading(e.target.value)}
-              sx={{ mb: 2 }}
-            />
-          </Dropdown>
-          <Dropdown text='Text'>
-            {texts?.map((text, index) => (
-              <Stack key={index}>
-                <Typography>{`Segment${index + 1}`}</Typography>
-                <Stack>
-                  <Typography>Title</Typography>
-                  <Input
-                    placeholder='title'
-                    value={text.title}
-                    onChange={(e) => handleChange(e, index)}
-                    sx={{ mb: 2 }}
-                  />
-                  <Typography>Sentence(s)</Typography>
-                  {text.text.length > 0 &&
-                    text.text.map((txt: string, idx: number) => (
-                      <>
-                        <Input
-                          key={idx}
-                          sx={{ mb: 2 }}
-                          placeholder='sentence'
-                          value={txt}
-                          onChange={(e) => handleSentenceChange(e, index, idx)}
-                        />
-                      </>
-                    ))}
+          <Accordion>
+            <AccordionSummary>Page Heading</AccordionSummary>
+            <AccordionDetails sx={{ py: 1 }}>
+              <Input
+                value={pageHeading}
+                onChange={(e) => setPageHeading(e.target.value)}
+                sx={{ mb: 2 }}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary>Text</AccordionSummary>
+            <AccordionDetails sx={{ py: 1 }}>
+              {texts?.map((text, index) => (
+                <Stack key={index}>
+                  <Typography level='h4'>{`Segment ${index + 1}`}</Typography>
+                  <Stack>
+                    <Typography>Title</Typography>
+                    <Input
+                      placeholder='title'
+                      value={text.title}
+                      onChange={(e) => handleChange(e, index)}
+                      sx={{ mb: 2 }}
+                    />
+                    <Typography>Sentence(s)</Typography>
+                    {text.text.length > 0 &&
+                      text.text.map((txt: string, idx: number) => (
+                        <>
+                          <Input
+                            key={idx}
+                            sx={{ mb: 2 }}
+                            placeholder='sentence'
+                            value={txt}
+                            onChange={(e) =>
+                              handleSentenceChange(e, index, idx)
+                            }
+                          />
+                        </>
+                      ))}
+                  </Stack>
                 </Stack>
-              </Stack>
-            ))}
-          </Dropdown>
-          <Dropdown text='Color'>
-            <MyColorPicker
-              initialColor={color}
-              description='Text Color'
-              setMyColor={setColor}
-            />
-          </Dropdown>
+              ))}
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary>Color</AccordionSummary>
+            <AccordionDetails sx={{ py: 1 }}>
+              <MyColorPicker
+                initialColor={color}
+                description='Text Color'
+                setMyColor={setColor}
+              />
+            </AccordionDetails>
+          </Accordion>
 
           <Stack
             sx={{

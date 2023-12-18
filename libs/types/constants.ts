@@ -3,7 +3,7 @@ import { zColor } from '@remotion/zod-types'
 
 export const IMAGE_COMP_NAME = 'Image'
 export const VIDEO_COMP_NAME = 'Video'
-export const VIDEO2_COMP_NAME = 'Story'
+export const STORY_COMP_NAME = 'Story'
 
 export const videoCompSchema = z.object({
   titleTexts: z.array(
