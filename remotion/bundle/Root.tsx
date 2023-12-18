@@ -17,7 +17,7 @@ import {
 import { ImageComp } from './Comps/Image/ImageComp'
 import { VideoComp } from './Comps/Video/VideoComp'
 import { StoryComp } from './Comps/Story/StoryComp'
-import './index.css'
+
 
 export const RemotionRoot: React.FC = () => {
   return (

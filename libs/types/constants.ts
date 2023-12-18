@@ -56,27 +56,29 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
   ],
   titleColor: '#ffff',
   pageHeading: 'Remotion Video',
-  videoUrls: ['test', 'test2', 'test3'],
+  videoUrls: ['https://static.videezy.com/system/resources/previews/000/044/047/original/NV-06.mp4',
+               'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
+                'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4'],
 }
 
 export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {
   coinRows: [
     {
-      imageUrl: 'btc.svg',
+      imageUrl: 'https://s2.coinmarketcap.com/static/img/coins/128x128/1.png',
       name: 'BTC',
       value: 23119,
       change: 0.4,
       direction: 'up',
     },
     {
-      imageUrl: 'eth.svg',
+      imageUrl: 'https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png',
       name: 'ETH',
       value: 1601,
       change: 0.1,
       direction: 'up',
     },
     {
-      imageUrl: 'ada.svg',
+      imageUrl: 'https://cryptologos.cc/logos/cardano-ada-logo.png',
       name: 'ADA',
       value: 0.36,
       change: 1.3,
