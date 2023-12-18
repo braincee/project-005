@@ -30,9 +30,6 @@ const Video2: NextPage = () => {
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>
-      <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
-        {pageHeading}
-      </Typography>
       <Grid container spacing={3}>
         <Grid
           sx={{
@@ -65,8 +62,6 @@ const Video2: NextPage = () => {
             coinRows={coinRows}
             setCoinRows={setCoinRows}
             inputProps={inputProps}
-            pageHeading={pageHeading}
-            setPageHeading={setPageHeading}
           />
         </Grid>
       </Grid>

@@ -72,8 +72,6 @@ const Image: NextPage = () => {
             inputProps={inputProps}
             color={color}
             setColor={setColor}
-            pageHeading={pageHeading}
-            setPageHeading={setPageHeading}
           />
         </Grid>
       </Grid>
