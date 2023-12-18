@@ -17,20 +17,17 @@ import { RenderStoryControls } from '@/components/RenderStoryControls'
 
 const Story: NextPage = () => {
   const [coinRows, setCoinRows] = useState(defaultStoryCompProps.coinRows)
-  const [pageHeading, setPageHeading] = useState(
-    defaultStoryCompProps.pageHeading
-  )
+
   const inputProps: z.infer<typeof storyCompSchema> = useMemo(() => {
     return {
       coinRows,
-      pageHeading,
     }
   }, [coinRows])
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>
       <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
-        {pageHeading}
+        Remotion Story
       </Typography>
       <Grid container spacing={3}>
         <Grid
@@ -64,8 +61,6 @@ const Story: NextPage = () => {
             coinRows={coinRows}
             setCoinRows={setCoinRows}
             inputProps={inputProps}
-            pageHeading={pageHeading}
-            setPageHeading={setPageHeading}
           />
         </Grid>
       </Grid>

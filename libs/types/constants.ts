@@ -13,7 +13,6 @@ export const videoCompSchema = z.object({
     })
   ),
   titleColor: zColor(),
-  pageHeading: z.string(),
   videoUrls: z.array(z.string()),
 })
 
@@ -27,7 +26,6 @@ export const coinRowSchema = z.object({
 
 export const storyCompSchema = z.object({
   coinRows: z.array(coinRowSchema),
-  pageHeading: z.string(),
 })
 
 export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
@@ -56,7 +54,6 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
     },
   ],
   titleColor: '#ffff',
-  pageHeading: 'Remotion Video',
   videoUrls: [
     'https://static.videezy.com/system/resources/previews/000/044/047/original/NV-06.mp4',
     'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
@@ -89,19 +86,16 @@ export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {
       direction: 'down',
     },
   ],
-  pageHeading: 'Remotion Story',
 }
 
 export const imageCompSchema = z.object({
   titleTexts: z.string(),
   titleColor: zColor(),
-  pageHeading: z.string(),
 })
 
 export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
   titleTexts: `Coinbase beats all expectations with $674M in revenue for Q3 2023`,
   titleColor: '#000',
-  pageHeading: 'Remotion Image',
 }
 
 export const DURATION_IN_FRAMES = 810

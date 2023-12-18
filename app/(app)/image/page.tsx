@@ -10,37 +10,27 @@ import {
   imageCompSchema,
 } from '@/libs/types/constants'
 import { ImageComp } from '@/remotion/bundle/Comps/Image/ImageComp'
-import { Box, Typography, Stack, Grid } from '@mui/joy'
+import { Box, Typography, Grid } from '@mui/joy'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
-import { Still } from 'remotion'
 import { z } from 'zod'
-
-// const control: React.CSSProperties = {
-//   width: '35%',
-//   padding: '10px',
-// }
 
 const Image: NextPage = () => {
   const [text, setText] = useState<string>(defaultImageCompProps.titleTexts)
   const [color, setColor] = useState(defaultImageCompProps.titleColor)
-  const [pageHeading, setPageHeading] = useState(
-    defaultImageCompProps.pageHeading
-  )
 
   const inputProps: z.infer<typeof imageCompSchema> = useMemo(() => {
     return {
       titleTexts: text,
       titleColor: color,
-      pageHeading: pageHeading,
     }
-  }, [text, color, pageHeading])
+  }, [text, color])
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>
       <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
-        {pageHeading}
+        Remotion Image
       </Typography>
       <Grid container spacing={3}>
         <Grid
@@ -76,8 +66,6 @@ const Image: NextPage = () => {
             inputProps={inputProps}
             color={color}
             setColor={setColor}
-            pageHeading={pageHeading}
-            setPageHeading={setPageHeading}
           />
         </Grid>
       </Grid>
