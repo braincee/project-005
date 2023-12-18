@@ -13,15 +13,7 @@ export const VideoSequence: React.FC<z.infer<typeof newsUpdateSchema>> = ({
 
   const isValidImageUrl = (urlString: string) => {
     try {
-      if (Boolean(new URL(urlString))) {
-        fetch(urlString).then((res) => {
-          if (res.ok) {
-            return true
-          } else {
-            return false
-          }
-        })
-      }
+      return Boolean(new URL(urlString))
     } catch (e) {
       return false
     }
@@ -49,7 +41,7 @@ export const VideoSequence: React.FC<z.infer<typeof newsUpdateSchema>> = ({
   return (
     <div style={{ position: 'relative', bottom: '10%' }}>
       <TransitionSeries>
-        {videoUrls.map((url: string, index: number) => (
+        {validVideoUrls.map((url: string, index: number) => (
           <>
             <TransitionSeries.Sequence key={index} durationInFrames={270}>
               <OffthreadVideo
@@ -58,7 +50,6 @@ export const VideoSequence: React.FC<z.infer<typeof newsUpdateSchema>> = ({
               />
             </TransitionSeries.Sequence>
             <TransitionSeries.Transition
-              key={index}
               presentation={slide()}
               timing={linearTiming({ durationInFrames: 10 })}
             />

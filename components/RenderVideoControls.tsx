@@ -152,17 +152,13 @@ export const RenderVideoControls: React.FC<{
                     <Typography>Sentence(s)</Typography>
                     {text.text.length > 0 &&
                       text.text.map((txt: string, idx: number) => (
-                        <>
-                          <Input
-                            key={idx}
-                            sx={{ mb: 2 }}
-                            placeholder='sentence'
-                            value={txt}
-                            onChange={(e) =>
-                              handleSentenceChange(e, index, idx)
-                            }
-                          />
-                        </>
+                        <Input
+                          key={idx}
+                          sx={{ mb: 2 }}
+                          placeholder='sentence'
+                          value={txt}
+                          onChange={(e) => handleSentenceChange(e, index, idx)}
+                        />
                       ))}
                   </Stack>
                 </Stack>
