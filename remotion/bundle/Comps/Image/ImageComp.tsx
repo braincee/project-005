@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { Text } from './Text'
 import { TopImage } from './TopImage'
 import { imageCompSchema } from '@/libs/types/constants'
+import { Stack } from '@mui/joy'
 
 export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
   titleTexts,
@@ -11,8 +12,8 @@ export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
   const { width, height } = useVideoConfig()
 
   return (
-    <div
-      style={{
+    <Stack
+      sx={{
         gap: '40px',
         position: 'absolute',
         top: 0,
@@ -24,6 +25,6 @@ export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
     >
       <TopImage />
       <Text titleTexts={titleTexts} titleColor={titleColor} />
-    </div>
+    </Stack>
   )
 }

@@ -81,7 +81,6 @@ export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {
       direction: 'down',
     },
   ],
-  // font: font.family,
 }
 
 export const imageCompSchema = z.object({
