@@ -1,6 +1,5 @@
 'use client'
 
-import { RenderImageControls } from '@/components/RenderImageControls'
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -10,29 +9,17 @@ import {
   imageCompSchema,
 } from '@/libs/types/constants'
 import { ImageComp } from '@/remotion/bundle/Comps/Image/ImageComp'
+import { Box, Typography, Stack } from '@mui/joy'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
 
-const outer: React.CSSProperties = {
-  overflow: 'hidden',
-  maxHeight: '80vh',
-  width: '65%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
 
-const player: React.CSSProperties = {
-  width: '100%',
-}
-
-const control: React.CSSProperties = {
-  width: '35%',
-  padding: '10px',
-}
+// const control: React.CSSProperties = {
+//   width: '35%',
+//   padding: '10px',
+// }
 
 const Image: NextPage = () => {
   const [text, setText] = useState<string>(defaultImageCompProps.titleTexts)
@@ -50,10 +37,17 @@ const Image: NextPage = () => {
   }, [text, color, pageHeading])
 
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>{pageHeading}</h1>
-      <div className='container'>
-        <div style={outer}>
+    <Box>
+      <Typography  level="h1" sx={{ textAlign: 'center' }}>{pageHeading}</Typography>
+        <Stack sx={{
+           overflow: 'hidden',
+           maxHeight: '80vh',
+           width: '65%',
+           display: 'flex',
+           flexDirection: 'column',
+           justifyContent: 'center',
+           alignItems: 'center',
+        }}>
           <Player
             component={ImageComp}
             inputProps={inputProps}
@@ -61,11 +55,12 @@ const Image: NextPage = () => {
             fps={VIDEO_FPS}
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
-            style={player}
             controls={true}
           />
-        </div>
+        </Stack>
+        {/*
         <div style={control}>
+
           <RenderImageControls
             text={text}
             setText={setText}
@@ -75,9 +70,9 @@ const Image: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
-        </div>
-      </div>
-    </div>
+        </div> */}
+      </Box>
+
   )
 }
 
