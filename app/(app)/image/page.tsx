@@ -14,6 +14,7 @@ import { Box, Typography, Stack, Grid } from '@mui/joy'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
+import { Still } from 'remotion'
 import { z } from 'zod'
 
 // const control: React.CSSProperties = {
@@ -52,11 +53,10 @@ const Image: NextPage = () => {
           <Player
             component={ImageComp}
             inputProps={inputProps}
-            durationInFrames={DURATION_IN_FRAMES}
+            durationInFrames={30}
             fps={VIDEO_FPS}
             compositionHeight={HEIGHT}
             compositionWidth={WIDTH}
-            controls={true}
             style={{ width: '100%', height: '100%' }}
           />
         </Grid>
