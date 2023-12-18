@@ -1,8 +1,29 @@
-import { AbsoluteFill, staticFile, useVideoConfig, Img } from 'remotion'
+import {
+  AbsoluteFill,
+  staticFile,
+  useVideoConfig,
+  Img,
+  continueRender,
+  delayRender,
+} from 'remotion'
 import { CoinRow } from './CoinRow'
 import { coinRowSchema, storyCompSchema } from '@/libs/types/constants'
 import { z } from 'zod'
 import { Heading } from './Heading'
+
+const waitForFont = delayRender()
+const font = new FontFace(
+  'Handel Gothic',
+  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
+)
+
+font
+  .load()
+  .then(() => {
+    document.fonts.add(font)
+    continueRender(waitForFont)
+  })
+  .catch((err) => console.log('Error loading font', err))
 
 export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
   coinRows,
@@ -19,7 +40,7 @@ export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
         flexDirection: 'column',
         color: '#fff',
         paddingTop: '120px',
-        fontFamily: 'Handel Gothic',
+        fontFamily: font.family,
       }}
     >
       <div style={{ textAlign: 'center' }}>

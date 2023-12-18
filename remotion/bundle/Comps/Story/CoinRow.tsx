@@ -1,4 +1,5 @@
 import { coinRowSchema } from '@/libs/types/constants'
+import { useState } from 'react'
 import {
   Img,
   interpolate,
@@ -33,6 +34,7 @@ export const CoinRow = ({
   change,
   direction,
 }: z.infer<typeof coinRowSchema>) => {
+  const [validImage, setValidImage] = useState(imageUrl)
   const frame = useCurrentFrame()
   const { durationInFrames, fps } = useVideoConfig()
 
@@ -81,16 +83,33 @@ export const CoinRow = ({
   const valueChange =
     currentTextIndex % 2 === 0 ? `${change}%` : `${dollarFormat(value)}`
 
+  const isValidImageUrl = (urlString: string) => {
+    try {
+      if (Boolean(new URL(urlString))) {
+        fetch(urlString).then((res) => {
+          if (res.ok) {
+            return true
+          } else {
+            return false
+          }
+        })
+      }
+    } catch (e) {
+      return false
+    }
+  }
+
+  if (isValidImageUrl(imageUrl)) {
+    setValidImage(imageUrl)
+  } else {
+    console.log('Invalid Image')
+  }
+
   return (
     <div style={container}>
       <div style={{ display: 'flex', gap: '100px', alignItems: 'center' }}>
-        <Img
-          placeholder='Image'
-          height={100}
-          width={100}
-          src={staticFile(imageUrl)}
-        />
-        <p style={{ fontSize: '70px', fontFamily: 'Handel Gothic' }}>{name}</p>
+        <Img placeholder='Image' height={100} width={100} src={validImage} />
+        <p style={{ fontSize: '70px' }}>{name}</p>
       </div>
       <div
         style={{
@@ -109,7 +128,6 @@ export const CoinRow = ({
             transform: `scale(${scale})`,
             inlineSize: '180px',
             overflowWrap: 'break-word',
-            fontFamily: 'Handel Gothic',
           }}
         >
           {valueChange}

@@ -29,7 +29,7 @@ export const LogoSequence = () => {
     >
       {[...Array(numDuplicates)].map((_, index) => (
         <Img
-          placeholder='Img'
+          placeholder='Image URL'
           height={32}
           width={200}
           src={staticFile(logoPaths[index % 2])}

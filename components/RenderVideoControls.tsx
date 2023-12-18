@@ -90,7 +90,7 @@ export const RenderVideoControls: React.FC<{
   }
 
   return (
-    <Box>
+    <Box sx={{ width: '100%' }}>
       {state.status === 'init' ||
       state.status === 'invoking' ||
       state.status === 'error' ? (

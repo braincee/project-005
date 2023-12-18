@@ -30,10 +30,20 @@ export const RenderImageControls: React.FC<{
   setPageHeading,
   inputProps,
 }) => {
-  const { renderMedia, state, undo } = useImageRendering(
-    IMAGE_COMP_NAME,
-    inputProps
-  )
+  const { renderMedia, state } = useImageRendering(IMAGE_COMP_NAME, inputProps)
+
+  const handleImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isValidUrl = (urlString: string) => {
+      try {
+        return Boolean(new URL(urlString))
+      } catch (e) {
+        return false
+      }
+    }
+    if (isValidUrl(e.target.value)) {
+      // setImageUrl(e.target.value)
+    }
+  }
 
   return (
     <Box sx={{ width: '100%' }}>

@@ -1,8 +1,7 @@
 import { z } from 'zod'
 import { zColor } from '@remotion/zod-types'
-import { continueRender, delayRender, staticFile } from 'remotion'
 
-export const myTextSchema = z.object({
+const myTextSchema = z.object({
   titleTexts: z.string(),
   titleColor: zColor(),
 })
@@ -20,7 +19,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         justifyContent: 'flex-start',
         width: '85%',
         paddingLeft: '10%',
-        fontFamily: 'Handel Gothic',
       }}
     >
       <p

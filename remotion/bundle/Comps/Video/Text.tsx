@@ -101,7 +101,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             textAlign: 'center',
             width: '70%',
             transform: transform,
-            fontFamily: 'Handel Gothic',
           }}
         >
           {item.title}
@@ -116,7 +115,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             textAlign: 'center',
             width: '70%',
             transform: `translate(${translateX}px)`,
-            fontFamily: 'Handel Gothic',
           }}
         >
           {item.text[textIndex - 1]}

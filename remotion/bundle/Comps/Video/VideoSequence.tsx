@@ -10,8 +10,7 @@ export const VideoSequence = () => {
         <TransitionSeries.Sequence durationInFrames={270}>
           <OffthreadVideo
             src={staticFile('stock_market_1.mp4')}
-            height={height / 2}
-            width={width}
+            style={{ height: height / 2, width: width }}
           />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
@@ -21,8 +20,7 @@ export const VideoSequence = () => {
         <TransitionSeries.Sequence durationInFrames={270}>
           <OffthreadVideo
             src={staticFile('stock_market_2.mp4')}
-            height={height / 2}
-            width={width}
+            style={{ height: height / 2, width: width }}
           />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
@@ -32,8 +30,7 @@ export const VideoSequence = () => {
         <TransitionSeries.Sequence durationInFrames={270}>
           <OffthreadVideo
             src={staticFile('stock_market_3.mp4')}
-            height={height / 2}
-            width={width}
+            style={{ height: height / 2, width: width }}
           />
         </TransitionSeries.Sequence>
       </TransitionSeries>
