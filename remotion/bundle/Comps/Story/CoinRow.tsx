@@ -85,15 +85,7 @@ export const CoinRow = ({
 
   const isValidImageUrl = (urlString: string) => {
     try {
-      if (Boolean(new URL(urlString))) {
-        fetch(urlString).then((res) => {
-          if (res.ok) {
-            return true
-          } else {
-            return false
-          }
-        })
-      }
+      Boolean(new URL(urlString))
     } catch (e) {
       return false
     }

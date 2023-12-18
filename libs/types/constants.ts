@@ -57,7 +57,7 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
   ],
   titleColor: '#ffff',
   pageHeading: 'Remotion Video',
-  videoUrls: ['test', 'test2', 'test3'],
+  videoUrls: ['https://youtu.be/t7lUSiddFd4', 'test2', 'test3'],
 }
 
 export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {

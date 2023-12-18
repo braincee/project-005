@@ -49,7 +49,7 @@ export const VideoSequence: React.FC<z.infer<typeof newsUpdateSchema>> = ({
   return (
     <div style={{ position: 'relative', bottom: '10%' }}>
       <TransitionSeries>
-        {validVideoUrls.map((url: string, index: number) => (
+        {videoUrls.map((url: string, index: number) => (
           <>
             <TransitionSeries.Sequence key={index} durationInFrames={270}>
               <OffthreadVideo

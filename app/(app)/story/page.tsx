@@ -5,7 +5,6 @@ import {
   VIDEO_FPS,
   WIDTH,
   defaultStoryCompProps,
-  defaultVideoCompProps,
   storyCompSchema,
 } from '@/libs/types/constants'
 import { Player } from '@remotion/player'
@@ -16,7 +15,7 @@ import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
 import { Box, Grid, Typography } from '@mui/joy'
 import { RenderStoryControls } from '@/components/RenderStoryControls'
 
-const Video2: NextPage = () => {
+const Story: NextPage = () => {
   const [coinRows, setCoinRows] = useState(defaultStoryCompProps.coinRows)
   const [pageHeading, setPageHeading] = useState(
     defaultStoryCompProps.pageHeading
@@ -74,4 +73,4 @@ const Video2: NextPage = () => {
   )
 }
 
-export default Video2
+export default Story
