@@ -10,7 +10,7 @@ import {
   videoCompSchema,
 } from '@/libs/types/constants'
 import { VideoComp } from '@/remotion/bundle/Comps/Video/VideoComp'
-import { Box, Grid, Typography } from '@mui/joy'
+import { Box, Grid } from '@mui/joy'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
@@ -31,9 +31,6 @@ const Video: NextPage = () => {
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>
-      <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
-        Remotion Video
-      </Typography>
       <Grid container spacing={3}>
         <Grid
           sx={{
