@@ -14,7 +14,6 @@ import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
 import { continueRender, delayRender, staticFile } from 'remotion'
 import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
-import { RenderStoryControls } from '@/components/RenderStoryControls'
 import { Box, Stack, Typography } from '@mui/joy'
 
 
