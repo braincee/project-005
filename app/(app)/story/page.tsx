@@ -12,9 +12,8 @@ import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
-import { continueRender, delayRender, staticFile } from 'remotion'
 import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
-import { Box, Grid, Stack, Typography } from '@mui/joy'
+import { Box, Grid, Typography } from '@mui/joy'
 import { RenderStoryControls } from '@/components/RenderStoryControls'
 
 const Video2: NextPage = () => {
