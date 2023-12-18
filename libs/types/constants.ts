@@ -14,6 +14,7 @@ export const videoCompSchema = z.object({
   ),
   titleColor: zColor(),
   pageHeading: z.string(),
+  videoUrls: z.array(z.string()),
 })
 
 export const coinRowSchema = z.object({
@@ -55,6 +56,7 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
   ],
   titleColor: '#ffff',
   pageHeading: 'Remotion Video',
+  videoUrls: ['test', 'test2', 'test3'],
 }
 
 export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {

@@ -89,8 +89,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
       ? `translateY(${translateYX}px)`
       : `translateX(${translateXY}px)`
 
-  console.log(transform, frame)
-
   const test = (item: any) => {
     if (textIndex === 0) {
       setMyresult(

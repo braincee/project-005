@@ -13,15 +13,11 @@ import {
 } from '@mui/joy'
 import { MyColorPicker } from './MyColorPicker'
 
-const controls: React.CSSProperties = {
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-}
-
 export const RenderVideoControls: React.FC<{
   texts: { title: string; text: string[] }[]
   color: string
+  videoUrls: string[]
+  setVideoUrls: React.Dispatch<React.SetStateAction<string[]>>
   setTexts: React.Dispatch<
     React.SetStateAction<{ title: string; text: string[] }[]>
   >
@@ -32,6 +28,8 @@ export const RenderVideoControls: React.FC<{
 }> = ({
   texts,
   setTexts,
+  videoUrls,
+  setVideoUrls,
   setColor,
   color,
   pageHeading,
@@ -42,6 +40,21 @@ export const RenderVideoControls: React.FC<{
     VIDEO_COMP_NAME,
     inputProps
   )
+
+  const handleUrlChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    textIndex: number
+  ) => {
+    setVideoUrls((prevUrls: string[]) => {
+      const newUrls = prevUrls.map((url: string, index: number) => {
+        if (index === textIndex) {
+          return e.target.value
+        }
+        return url
+      })
+      return newUrls
+    })
+  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -103,6 +116,23 @@ export const RenderVideoControls: React.FC<{
                 onChange={(e) => setPageHeading(e.target.value)}
                 sx={{ mb: 2 }}
               />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary>Video URLs</AccordionSummary>
+            <AccordionDetails sx={{ py: 1 }}>
+              {videoUrls?.map((url, index) => (
+                <Stack key={index}>
+                  <Typography level='h4'>{`Segment ${index + 1}`}</Typography>
+
+                  <Input
+                    placeholder='url'
+                    value={url}
+                    onChange={(e) => handleUrlChange(e, index)}
+                    sx={{ mb: 2 }}
+                  />
+                </Stack>
+              ))}
             </AccordionDetails>
           </Accordion>
           <Accordion>

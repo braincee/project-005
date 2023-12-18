@@ -37,6 +37,7 @@ const control: React.CSSProperties = {
 const Video: NextPage = () => {
   const [texts, setTexts] = useState(defaultVideoCompProps.titleTexts)
   const [color, setColor] = useState(defaultVideoCompProps.titleColor)
+  const [videoUrls, setVideoUrls] = useState(defaultVideoCompProps.videoUrls)
   const [pageHeading, setPageHeading] = useState(
     defaultVideoCompProps.pageHeading
   )
@@ -46,6 +47,7 @@ const Video: NextPage = () => {
       titleTexts: texts,
       titleColor: color,
       pageHeading: pageHeading,
+      videoUrls,
     }
   }, [texts, color, pageHeading])
 
@@ -69,6 +71,8 @@ const Video: NextPage = () => {
           <RenderVideoControls
             texts={texts}
             setTexts={setTexts}
+            videoUrls={videoUrls}
+            setVideoUrls={setVideoUrls}
             inputProps={inputProps}
             color={color}
             setColor={setColor}
