@@ -64,32 +64,6 @@ export const VideoSequence: React.FC<z.infer<typeof newsUpdateSchema>> = ({
             />
           </>
         ))}
-        {/* <TransitionSeries.Sequence durationInFrames={270}>
-          <OffthreadVideo
-            src={staticFile('stock_market_1.mp4')}
-            style={{ height: height / 2, width: width }}
-          />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide()}
-          timing={linearTiming({ durationInFrames: 10 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={270}>
-          <OffthreadVideo
-            src={staticFile('stock_market_2.mp4')}
-            style={{ height: height / 2, width: width }}
-          />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide()}
-          timing={linearTiming({ durationInFrames: 10 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={270}>
-          <OffthreadVideo
-            src={staticFile('stock_market_3.mp4')}
-            style={{ height: height / 2, width: width }}
-          />
-        </TransitionSeries.Sequence> */}
       </TransitionSeries>
     </div>
   )
