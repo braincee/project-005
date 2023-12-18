@@ -1,6 +1,6 @@
 'use client'
 
-// import { RenderImageControls } from '@/components/RenderImageControls'
+import { RenderImageControls } from '@/components/RenderImageControls'
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -65,7 +65,7 @@ const Image: NextPage = () => {
             controls={true}
           />
         </div>
-        {/* <div style={control}>
+        <div style={control}>
           <RenderImageControls
             text={text}
             setText={setText}
@@ -75,7 +75,7 @@ const Image: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   )

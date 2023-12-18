@@ -132,7 +132,7 @@ export const RenderStoryControls: React.FC<{
       {state.status === 'init' ||
       state.status === 'invoking' ||
       state.status === 'error' ? (
-        <Stack>
+        <Stack sx={{ width: '100%' }}>
           <Accordion>
             <AccordionSummary>Page Heading</AccordionSummary>
             <AccordionDetails sx={{ py: 1 }}>
@@ -208,7 +208,14 @@ export const RenderStoryControls: React.FC<{
             </Stack>
           ))}
 
-          <Stack>
+          <Stack
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              mt: 2,
+            }}
+          >
             <Button
               disabled={state.status === 'invoking'}
               loading={state.status === 'invoking'}

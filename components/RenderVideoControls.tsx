@@ -94,7 +94,7 @@ export const RenderVideoControls: React.FC<{
       {state.status === 'init' ||
       state.status === 'invoking' ||
       state.status === 'error' ? (
-        <Stack>
+        <Stack sx={{ width: '100%' }}>
           <Accordion>
             <AccordionSummary>Page Heading</AccordionSummary>
             <AccordionDetails sx={{ py: 1 }}>
