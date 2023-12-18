@@ -1,11 +1,4 @@
-import {
-  continueRender,
-  delayRender,
-  interpolate,
-  staticFile,
-  useCurrentFrame,
-  useVideoConfig,
-} from 'remotion'
+import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 import { z } from 'zod'
 import { useMemo, useState } from 'react'
 import { zColor } from '@remotion/zod-types'
@@ -19,20 +12,6 @@ const myTextSchema = z.object({
   ),
   titleColor: zColor(),
 })
-
-const waitForFont = delayRender()
-const font = new FontFace(
-  'Handel Gothic',
-  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
-)
-
-font
-  .load()
-  .then(() => {
-    document.fonts.add(font)
-    continueRender(waitForFont)
-  })
-  .catch((err) => console.log('Error loading font', err))
 
 export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
   titleTexts,
@@ -122,7 +101,7 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             textAlign: 'center',
             width: '70%',
             transform: transform,
-            fontFamily: font.family,
+            fontFamily: 'Handel Gothic',
           }}
         >
           {item.title}
@@ -137,7 +116,7 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             textAlign: 'center',
             width: '70%',
             transform: `translate(${translateX}px)`,
-            fontFamily: font.family,
+            fontFamily: 'Handel Gothic',
           }}
         >
           {item.text[textIndex - 1]}

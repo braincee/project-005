@@ -3,7 +3,7 @@ import {
   DURATION_IN_FRAMES,
   HEIGHT,
   IMAGE_COMP_NAME,
-  VIDEO2_COMP_NAME,
+  STORY_COMP_NAME,
   VIDEO_COMP_NAME,
   VIDEO_FPS,
   WIDTH,
@@ -17,6 +17,7 @@ import {
 import { ImageComp } from './Comps/Image/ImageComp'
 import { VideoComp } from './Comps/Video/VideoComp'
 import { StoryComp } from './Comps/Story/StoryComp'
+import './index.css'
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -40,7 +41,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={defaultImageCompProps}
       />
       <Composition
-        id={VIDEO2_COMP_NAME}
+        id={STORY_COMP_NAME}
         component={StoryComp}
         durationInFrames={420}
         fps={VIDEO_FPS}

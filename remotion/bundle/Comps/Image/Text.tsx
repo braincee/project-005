@@ -7,20 +7,6 @@ export const myTextSchema = z.object({
   titleColor: zColor(),
 })
 
-const waitForFont = delayRender()
-const font = new FontFace(
-  'Handel Gothic',
-  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
-)
-
-font
-  .load()
-  .then(() => {
-    document.fonts.add(font)
-    continueRender(waitForFont)
-  })
-  .catch((err) => console.log('Error loading font', err))
-
 export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
   titleTexts,
   titleColor,
@@ -34,13 +20,13 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         justifyContent: 'flex-start',
         width: '85%',
         paddingLeft: '10%',
+        fontFamily: 'Handel Gothic',
       }}
     >
       <p
         style={{
           color: titleColor,
-          fontSize: '120px',
-          fontFamily: font.family,
+          fontSize: '100px',
         }}
       >
         {titleTexts}

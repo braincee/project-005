@@ -1,24 +1,9 @@
 import { z } from 'zod'
 import { zColor } from '@remotion/zod-types'
-import { continueRender, delayRender, staticFile } from 'remotion'
 
 export const IMAGE_COMP_NAME = 'Image'
 export const VIDEO_COMP_NAME = 'Video'
 export const VIDEO2_COMP_NAME = 'Story'
-
-// const waitForFont = delayRender()
-// const font = new FontFace(
-//   'Handel Gothic',
-//   `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
-// )
-
-// font
-//   .load()
-//   .then(() => {
-//     document.fonts.add(font)
-//     continueRender(waitForFont)
-//   })
-//   .catch((err) => console.log('Error loading font', err))
 
 export const videoCompSchema = z.object({
   titleTexts: z.array(

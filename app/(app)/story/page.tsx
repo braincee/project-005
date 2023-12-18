@@ -1,6 +1,5 @@
 'use client'
 
-// import { RenderVideo2Controls } from '@/components/RenderVideo2Controls'
 import {
   HEIGHT,
   VIDEO_FPS,
@@ -15,20 +14,7 @@ import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
 import { continueRender, delayRender, staticFile } from 'remotion'
 import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
-
-const waitForFont = delayRender()
-const font = new FontFace(
-  'Handel Gothic',
-  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
-)
-
-font
-  .load()
-  .then(() => {
-    document.fonts.add(font)
-    continueRender(waitForFont)
-  })
-  .catch((err) => console.log('Error loading font', err))
+import { RenderStoryControls } from '@/components/RenderStoryControls'
 
 const outer: React.CSSProperties = {
   overflow: 'hidden',
@@ -51,16 +37,14 @@ const control: React.CSSProperties = {
 
 const Video2: NextPage = () => {
   const [coinRows, setCoinRows] = useState(defaultStoryCompProps.coinRows)
-  const [myFont, setMyFont] = useState(font.family)
   const [pageHeading, setPageHeading] = useState(
     defaultVideoCompProps.pageHeading
   )
   const inputProps: z.infer<typeof storyCompSchema> = useMemo(() => {
     return {
       coinRows,
-      font: myFont,
     }
-  }, [coinRows, myFont])
+  }, [coinRows])
 
   return (
     <div>
@@ -78,16 +62,15 @@ const Video2: NextPage = () => {
             controls={true}
           />
         </div>
-        {/* <div style={control}>
-          <RenderVideo2Controls
+        <div style={control}>
+          <RenderStoryControls
             coinRows={coinRows}
             setCoinRows={setCoinRows}
             inputProps={inputProps}
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
-            setMyFont={setMyFont}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   )

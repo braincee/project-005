@@ -1,6 +1,6 @@
 'use client'
 
-// import { RenderVideoControls } from '@/components/RenderVideoControls'
+import { RenderVideoControls } from '@/components/RenderVideoControls'
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -65,7 +65,7 @@ const Video: NextPage = () => {
             controls={true}
           />
         </div>
-        {/* <div style={control}>
+        <div style={control}>
           <RenderVideoControls
             texts={texts}
             setTexts={setTexts}
@@ -75,7 +75,7 @@ const Video: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   )

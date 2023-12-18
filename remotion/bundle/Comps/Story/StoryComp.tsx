@@ -3,7 +3,6 @@ import { CoinRow } from './CoinRow'
 import { coinRowSchema, storyCompSchema } from '@/libs/types/constants'
 import { z } from 'zod'
 import { Heading } from './Heading'
-import '../index.css'
 
 export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
   coinRows,
