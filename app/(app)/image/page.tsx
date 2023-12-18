@@ -2,7 +2,6 @@
 
 import { RenderImageControls } from '@/components/RenderImageControls'
 import {
-  DURATION_IN_FRAMES,
   HEIGHT,
   VIDEO_FPS,
   WIDTH,
@@ -29,9 +28,6 @@ const Image: NextPage = () => {
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>
-      <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
-        Remotion Image
-      </Typography>
       <Grid container spacing={3}>
         <Grid
           sx={{

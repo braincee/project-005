@@ -12,7 +12,7 @@ import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
 import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
-import { Box, Grid, Typography } from '@mui/joy'
+import { Box, Grid, } from '@mui/joy'
 import { RenderStoryControls } from '@/components/RenderStoryControls'
 
 const Story: NextPage = () => {
@@ -26,9 +26,6 @@ const Story: NextPage = () => {
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>
-      <Typography level='h1' sx={{ textAlign: 'center', mb: 5 }}>
-        Remotion Story
-      </Typography>
       <Grid container spacing={3}>
         <Grid
           sx={{
