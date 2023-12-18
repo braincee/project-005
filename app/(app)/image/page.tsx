@@ -16,10 +16,6 @@ import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
 
-// const control: React.CSSProperties = {
-//   width: '35%',
-//   padding: '10px',
-// }
 
 const Image: NextPage = () => {
   const [text, setText] = useState<string>(defaultImageCompProps.titleTexts)
