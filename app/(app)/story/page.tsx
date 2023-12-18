@@ -19,11 +19,12 @@ import { RenderStoryControls } from '@/components/RenderStoryControls'
 const Video2: NextPage = () => {
   const [coinRows, setCoinRows] = useState(defaultStoryCompProps.coinRows)
   const [pageHeading, setPageHeading] = useState(
-    defaultVideoCompProps.pageHeading
+    defaultStoryCompProps.pageHeading
   )
   const inputProps: z.infer<typeof storyCompSchema> = useMemo(() => {
     return {
       coinRows,
+      pageHeading,
     }
   }, [coinRows])
 

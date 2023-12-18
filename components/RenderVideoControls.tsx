@@ -110,7 +110,7 @@ export const RenderVideoControls: React.FC<{
         <Stack sx={{ width: '100%' }}>
           <Accordion>
             <AccordionSummary>Page Heading</AccordionSummary>
-            <AccordionDetails sx={{ py: 1 }}>
+            <AccordionDetails sx={{ p: 1 }}>
               <Input
                 value={pageHeading}
                 onChange={(e) => setPageHeading(e.target.value)}
@@ -120,10 +120,10 @@ export const RenderVideoControls: React.FC<{
           </Accordion>
           <Accordion>
             <AccordionSummary>Video URLs</AccordionSummary>
-            <AccordionDetails sx={{ py: 1 }}>
+            <AccordionDetails sx={{ p: 1 }}>
               {videoUrls?.map((url, index) => (
                 <Stack key={index}>
-                  <Typography level='h4'>{`Segment ${index + 1}`}</Typography>
+                  <Typography>{`Url ${index + 1}`}</Typography>
 
                   <Input
                     placeholder='url'
@@ -137,10 +137,10 @@ export const RenderVideoControls: React.FC<{
           </Accordion>
           <Accordion>
             <AccordionSummary>Text</AccordionSummary>
-            <AccordionDetails sx={{ py: 1 }}>
+            <AccordionDetails sx={{ p: 1 }}>
               {texts?.map((text, index) => (
                 <Stack key={index}>
-                  <Typography level='h4'>{`Segment ${index + 1}`}</Typography>
+                  <Typography>{`Segment ${index + 1}`}</Typography>
                   <Stack>
                     <Typography>Title</Typography>
                     <Input
@@ -171,7 +171,7 @@ export const RenderVideoControls: React.FC<{
           </Accordion>
           <Accordion>
             <AccordionSummary>Color</AccordionSummary>
-            <AccordionDetails sx={{ py: 1 }}>
+            <AccordionDetails sx={{ p: 1 }}>
               <MyColorPicker
                 initialColor={color}
                 description='Text Color'
