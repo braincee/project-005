@@ -8,15 +8,15 @@ import {
   VIDEO_FPS,
   WIDTH,
   defaultImageCompProps,
-  defaultVideo2CompProps,
+  defaultStoryCompProps,
   defaultVideoCompProps,
   imageCompSchema,
-  video2CompSchema,
+  storyCompSchema,
   videoCompSchema,
 } from '../../libs/types/constants'
-import { ImageComp } from './MyComp/Image/ImageComp'
-import { VideoComp } from './MyComp/Video/VideoComp'
-import { Main } from './MyComp/Video2/Main'
+import { ImageComp } from './Comps/Image/ImageComp'
+import { VideoComp } from './Comps/Video/VideoComp'
+import { StoryComp } from './Comps/Story/StoryComp'
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -41,13 +41,13 @@ export const RemotionRoot: React.FC = () => {
       />
       <Composition
         id={VIDEO2_COMP_NAME}
-        component={Main}
+        component={StoryComp}
         durationInFrames={420}
         fps={VIDEO_FPS}
         width={WIDTH}
         height={HEIGHT}
-        schema={video2CompSchema}
-        defaultProps={defaultVideo2CompProps}
+        schema={storyCompSchema}
+        defaultProps={defaultStoryCompProps}
       />
     </>
   )

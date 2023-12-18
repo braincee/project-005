@@ -32,7 +32,6 @@ export const CoinRow = ({
   value,
   change,
   direction,
-  fontFamily,
 }: z.infer<typeof coinRowSchema>) => {
   const frame = useCurrentFrame()
   const { durationInFrames, fps } = useVideoConfig()
@@ -91,7 +90,7 @@ export const CoinRow = ({
           width={100}
           src={staticFile(imageUrl)}
         />
-        <p style={{ fontSize: '70px', fontFamily }}>{name}</p>
+        <p style={{ fontSize: '70px', fontFamily: 'Handel Gothic' }}>{name}</p>
       </div>
       <div
         style={{
@@ -110,7 +109,7 @@ export const CoinRow = ({
             transform: `scale(${scale})`,
             inlineSize: '180px',
             overflowWrap: 'break-word',
-            fontFamily,
+            fontFamily: 'Handel Gothic',
           }}
         >
           {valueChange}

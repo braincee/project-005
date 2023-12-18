@@ -1,6 +1,6 @@
 'use client'
 
-import { RenderVideoControls } from '@/components/RenderVideoControls'
+// import { RenderVideoControls } from '@/components/RenderVideoControls'
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -9,7 +9,7 @@ import {
   defaultVideoCompProps,
   videoCompSchema,
 } from '@/libs/types/constants'
-import { VideoComp } from '@/remotion/bundle/MyComp/Video/VideoComp'
+import { VideoComp } from '@/remotion/bundle/Comps/Video/VideoComp'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
@@ -65,7 +65,7 @@ const Video: NextPage = () => {
             controls={true}
           />
         </div>
-        <div style={control}>
+        {/* <div style={control}>
           <RenderVideoControls
             texts={texts}
             setTexts={setTexts}
@@ -75,7 +75,7 @@ const Video: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   )

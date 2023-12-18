@@ -1,17 +1,12 @@
-import {
-  AbsoluteFill,
-  staticFile,
-  useVideoConfig,
-  Img,
-} from 'remotion'
+import { AbsoluteFill, staticFile, useVideoConfig, Img } from 'remotion'
 import { CoinRow } from './CoinRow'
-import { video2CompSchema, coinRowSchema } from '@/libs/types/constants'
+import { coinRowSchema, storyCompSchema } from '@/libs/types/constants'
 import { z } from 'zod'
 import { Heading } from './Heading'
+import '../index.css'
 
-export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
+export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
   coinRows,
-  font,
 }) => {
   const { width, height } = useVideoConfig()
 
@@ -25,7 +20,7 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
         flexDirection: 'column',
         color: '#fff',
         paddingTop: '120px',
-        fontFamily: font,
+        fontFamily: 'Handel Gothic',
       }}
     >
       <div style={{ textAlign: 'center' }}>
@@ -52,7 +47,6 @@ export const Main: React.FC<z.infer<typeof video2CompSchema>> = ({
             value={coinRow.value}
             change={coinRow.change}
             direction={coinRow.direction}
-            fontFamily={font}
           />
         ))}
       </div>

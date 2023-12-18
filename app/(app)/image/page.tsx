@@ -1,6 +1,6 @@
 'use client'
 
-import { RenderImageControls } from '@/components/RenderImageControls'
+// import { RenderImageControls } from '@/components/RenderImageControls'
 import {
   DURATION_IN_FRAMES,
   HEIGHT,
@@ -9,7 +9,7 @@ import {
   defaultImageCompProps,
   imageCompSchema,
 } from '@/libs/types/constants'
-import { ImageComp } from '@/remotion/bundle/MyComp/Image/ImageComp'
+import { ImageComp } from '@/remotion/bundle/Comps/Image/ImageComp'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
@@ -65,7 +65,7 @@ const Image: NextPage = () => {
             controls={true}
           />
         </div>
-        <div style={control}>
+        {/* <div style={control}>
           <RenderImageControls
             text={text}
             setText={setText}
@@ -75,7 +75,7 @@ const Image: NextPage = () => {
             pageHeading={pageHeading}
             setPageHeading={setPageHeading}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   )

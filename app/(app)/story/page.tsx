@@ -1,20 +1,20 @@
 'use client'
 
-import { RenderVideo2Controls } from '@/components/RenderVideo2Controls'
+// import { RenderVideo2Controls } from '@/components/RenderVideo2Controls'
 import {
   HEIGHT,
   VIDEO_FPS,
   WIDTH,
-  defaultVideo2CompProps,
+  defaultStoryCompProps,
   defaultVideoCompProps,
-  video2CompSchema,
+  storyCompSchema,
 } from '@/libs/types/constants'
-import { Main } from '@/remotion/bundle/MyComp/Video2/Main'
 import { Player } from '@remotion/player'
 import type { NextPage } from 'next'
 import React, { useMemo, useState } from 'react'
 import { z } from 'zod'
 import { continueRender, delayRender, staticFile } from 'remotion'
+import { StoryComp } from '@/remotion/bundle/Comps/Story/StoryComp'
 
 const waitForFont = delayRender()
 const font = new FontFace(
@@ -50,12 +50,12 @@ const control: React.CSSProperties = {
 }
 
 const Video2: NextPage = () => {
-  const [coinRows, setCoinRows] = useState(defaultVideo2CompProps.coinRows)
+  const [coinRows, setCoinRows] = useState(defaultStoryCompProps.coinRows)
   const [myFont, setMyFont] = useState(font.family)
   const [pageHeading, setPageHeading] = useState(
     defaultVideoCompProps.pageHeading
   )
-  const inputProps: z.infer<typeof video2CompSchema> = useMemo(() => {
+  const inputProps: z.infer<typeof storyCompSchema> = useMemo(() => {
     return {
       coinRows,
       font: myFont,
@@ -68,7 +68,7 @@ const Video2: NextPage = () => {
       <div className='container'>
         <div style={outer}>
           <Player
-            component={Main}
+            component={StoryComp}
             inputProps={inputProps}
             durationInFrames={420}
             fps={VIDEO_FPS}
@@ -78,7 +78,7 @@ const Video2: NextPage = () => {
             controls={true}
           />
         </div>
-        <div style={control}>
+        {/* <div style={control}>
           <RenderVideo2Controls
             coinRows={coinRows}
             setCoinRows={setCoinRows}
@@ -87,7 +87,7 @@ const Video2: NextPage = () => {
             setPageHeading={setPageHeading}
             setMyFont={setMyFont}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   )

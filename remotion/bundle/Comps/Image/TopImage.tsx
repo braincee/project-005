@@ -5,7 +5,7 @@ export const TopImage: React.FC = () => {
   return (
     <AbsoluteFill>
       <div style={{ position: 'relative', bottom: '1%', clipPath: clipPath }}>
-        <Img src={staticFile('celebration.jpg')} />
+        <Img placeholder='Image' src={staticFile('celebration.jpg')} />
       </div>
     </AbsoluteFill>
   )
