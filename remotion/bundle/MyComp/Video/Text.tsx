@@ -123,7 +123,6 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
             width: '70%',
             transform: transform,
             fontFamily: font.family,
-            zIndex: 100,
           }}
         >
           {item.title}

@@ -1,5 +1,4 @@
 await import('./env.mjs')
-import { env } from './env.mjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,7 +14,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `${env.RENDER_URL}/api/:path*`,
+        destination: `http://localhost:3001/api/:path*`,
       },
     ]
   },

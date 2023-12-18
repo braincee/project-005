@@ -1,6 +1,6 @@
 import { linearTiming, TransitionSeries } from '@remotion/transitions'
 import { slide } from '@remotion/transitions/slide'
-import { OffthreadVideo, useVideoConfig, staticFile, Video } from 'remotion'
+import { OffthreadVideo, useVideoConfig, staticFile } from 'remotion'
 
 export const VideoSequence = () => {
   const { width, height } = useVideoConfig()
@@ -10,7 +10,8 @@ export const VideoSequence = () => {
         <TransitionSeries.Sequence durationInFrames={270}>
           <OffthreadVideo
             src={staticFile('stock_market_1.mp4')}
-            style={{ height: height / 2, width: width }}
+            height={height / 2}
+            width={width}
           />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
@@ -20,7 +21,8 @@ export const VideoSequence = () => {
         <TransitionSeries.Sequence durationInFrames={270}>
           <OffthreadVideo
             src={staticFile('stock_market_2.mp4')}
-            style={{ height: height / 2, width: width }}
+            height={height / 2}
+            width={width}
           />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
@@ -30,7 +32,8 @@ export const VideoSequence = () => {
         <TransitionSeries.Sequence durationInFrames={270}>
           <OffthreadVideo
             src={staticFile('stock_market_3.mp4')}
-            style={{ height: height / 2, width: width }}
+            height={height / 2}
+            width={width}
           />
         </TransitionSeries.Sequence>
       </TransitionSeries>

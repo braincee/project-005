@@ -32,14 +32,14 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
         top: '42%',
         display: 'flex',
         justifyContent: 'flex-start',
-        width: '80%',
+        width: '85%',
         paddingLeft: '10%',
       }}
     >
       <p
         style={{
           color: titleColor,
-          fontSize: '100px',
+          fontSize: '120px',
           fontFamily: font.family,
         }}
       >

@@ -4,7 +4,6 @@ import { Audio, staticFile } from 'remotion'
 export const AudioPlayer: React.FC = () => {
   return (
     <Audio
-      placeholder='Audio'
       src={staticFile('news_update.mp3')}
       volume={1.0}
       startFrom={0}
