@@ -5,15 +5,26 @@ export const IMAGE_COMP_NAME = 'Image'
 export const VIDEO_COMP_NAME = 'Video'
 export const STORY_COMP_NAME = 'Story'
 
+// export const videoCompSchema = z.object({
+//   titleTexts: z.array(
+//     z.object({
+//       title: z.string(),
+//       text: z.array(z.string()),
+//     })
+//   ),
+//   titleColor: zColor(),
+//   videoUrls: z.array(z.string()),
+//   audioUrl: z.string(),
+// })
+
 export const videoCompSchema = z.object({
-  titleTexts: z.array(
+  segments: z.array(
     z.object({
       title: z.string(),
-      text: z.array(z.string()),
+      sentences: z.array(z.string()),
+      videoUrl: z.string(),
     })
   ),
-  titleColor: zColor(),
-  videoUrls: z.array(z.string()),
   audioUrl: z.string(),
 })
 
@@ -30,39 +41,74 @@ export const storyCompSchema = z.object({
 })
 
 export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
-  titleTexts: [
+  segments: [
     {
       title: 'Memecoins Are Making Solana Users RICH',
-      text: [
+      sentences: [
         "BONK, Solana's memecoin surged 116% after getting listed on Binance",
         'Meanwhile, users rushed to buy a Solana phone, which comes with 30M BONK',
       ],
+      videoUrl:
+        'https://static.videezy.com/system/resources/previews/000/044/047/original/NV-06.mp4',
     },
     {
       title: 'SafeMoon Bankruptcy Takes Ugly Turn',
-      text: [
+      sentences: [
         'SafeMoon filed for Chapter 7 bankruptcy protection after being charged for fraud',
         'The value of SFM plunged by 42% trading close to zero to the dismay of holders',
       ],
+      videoUrl:
+        'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
     },
     {
       title: 'This Protocol Pays You to Test Its Network',
-      text: [
+      sentences: [
         'Privacy-focused LI blockchain Namada pays you to stress test the network consensus',
         'Presented as a competitive game, the goal is to earn points for using its features',
         'Namada has allocated 3% of its token supply to the testnet participants',
       ],
+      videoUrl:
+        'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
     },
-  ],
-  titleColor: '#ffff',
-  videoUrls: [
-    'https://static.videezy.com/system/resources/previews/000/044/047/original/NV-06.mp4',
-    'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
-    'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
   ],
   audioUrl:
     ' https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
 }
+
+// export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
+//   titleTexts: [
+//     {
+//       title: 'Memecoins Are Making Solana Users RICH',
+//       text: [
+//         "BONK, Solana's memecoin surged 116% after getting listed on Binance",
+//         'Meanwhile, users rushed to buy a Solana phone, which comes with 30M BONK',
+//       ],
+//     },
+//     {
+//       title: 'SafeMoon Bankruptcy Takes Ugly Turn',
+//       text: [
+//         'SafeMoon filed for Chapter 7 bankruptcy protection after being charged for fraud',
+//         'The value of SFM plunged by 42% trading close to zero to the dismay of holders',
+//       ],
+//     },
+//     {
+//       title: 'This Protocol Pays You to Test Its Network',
+//       text: [
+//         'Privacy-focused LI blockchain Namada pays you to stress test the network consensus',
+//         'Presented as a competitive game, the goal is to earn points for using its features',
+//         'Namada has allocated 3% of its token supply to the testnet participants',
+//       ],
+//     },
+//   ],
+//   titleColor: '#ffff',
+//   videoUrls: [
+//     'https://static.videezy.com/system/resources/previews/000/044/047/original/NV-06.mp4',
+//     'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
+//     'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
+//   ],
+//   audioUrl:
+//     ' https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+// }
 
 export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {
   coinRows: [
