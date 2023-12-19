@@ -2,52 +2,29 @@ import { linearTiming, TransitionSeries } from '@remotion/transitions'
 import { slide } from '@remotion/transitions/slide'
 import { OffthreadVideo, useVideoConfig } from 'remotion'
 import { z } from 'zod'
-import { useMemo, useState } from 'react'
 
 const urlSchema = z.object({
-  videoUrls: z.array(z.string()),
+  segments: z.array(
+    z.object({
+      title: z.string(),
+      sentences: z.array(z.string()),
+      videoUrl: z.string(),
+    })
+  ),
 })
 export const VideoSequence: React.FC<z.infer<typeof urlSchema>> = ({
-  videoUrls,
+  segments,
 }) => {
   const { width, height } = useVideoConfig()
-  const [validVideoUrls, setValidVideoUrls] = useState(videoUrls)
-
-  const isValidImageUrl = (urlString: string) => {
-    try {
-      return Boolean(new URL(urlString))
-    } catch (e) {
-      return false
-    }
-  }
-
-  const handleVideoUrl = () =>
-    useMemo(() => {
-      videoUrls.forEach((videoUrl, urlIndex: number) => {
-        if (isValidImageUrl(videoUrl)) {
-          setValidVideoUrls((prevUrls: string[]) => {
-            const newUrls = prevUrls.map((url: string, index: number) => {
-              if (index === urlIndex) {
-                return videoUrl
-              }
-              return url
-            })
-            return newUrls
-          })
-        } else {
-          console.log('Invalid Video Url')
-        }
-      })
-    }, [videoUrls])
 
   return (
     <div style={{ position: 'relative', bottom: '10%' }}>
       <TransitionSeries>
-        {validVideoUrls.map((url: string, index: number) => (
+        {segments.map((segment: any, index: number) => (
           <>
             <TransitionSeries.Sequence key={index} durationInFrames={270}>
               <OffthreadVideo
-                src={url}
+                src={segment.videoUrl}
                 style={{ height: height / 2, width: width }}
               />
             </TransitionSeries.Sequence>

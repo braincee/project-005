@@ -1,34 +1,31 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 import { z } from 'zod'
 import { useMemo, useState } from 'react'
-import { zColor } from '@remotion/zod-types'
 
 const myTextSchema = z.object({
-  titleTexts: z.array(
+  segments: z.array(
     z.object({
       title: z.string(),
-      text: z.array(z.string()),
+      sentences: z.array(z.string()),
+      videoUrl: z.string(),
     })
   ),
-  titleColor: zColor(),
 })
 
-export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
-  titleTexts,
-  titleColor,
-}) => {
+export const Text: React.FC<z.infer<typeof myTextSchema>> = ({ segments }) => {
   const videoConfig = useVideoConfig()
   const frame = useCurrentFrame()
   const [myResult, setMyresult] = useState<React.ReactElement>()
 
-  const textInterval = videoConfig.durationInFrames / titleTexts.length
+  const textInterval = videoConfig.durationInFrames / segments.length
   const currentTextIndex = Math.floor(frame / textInterval)
 
-  const interval = textInterval / (titleTexts[currentTextIndex].text.length + 1)
+  const interval =
+    textInterval / (segments[currentTextIndex].sentences.length + 1)
 
   const textIndex =
     Math.floor(frame / interval) %
-    (titleTexts[currentTextIndex].text.length + 1)
+    (segments[currentTextIndex].sentences.length + 1)
 
   const translateYX = interpolate(
     frame,
@@ -89,12 +86,12 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
       ? `translateY(${translateYX}px)`
       : `translateX(${translateXY}px)`
 
-  const test = (item: any) => {
+  const resultsDisplay = (item: any) => {
     if (textIndex === 0) {
       setMyresult(
         <p
           style={{
-            color: titleColor,
+            color: '#fff',
             fontSize: '70px',
             textAlign: 'center',
             width: '70%',
@@ -108,21 +105,21 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({
       setMyresult(
         <p
           style={{
-            color: titleColor,
+            color: '#fff',
             fontSize: '70px',
             textAlign: 'center',
             width: '70%',
             transform: `translate(${translateX}px)`,
           }}
         >
-          {item.text[textIndex - 1]}
+          {item.sentences[textIndex - 1]}
         </p>
       )
     }
   }
 
   useMemo(() => {
-    test(titleTexts[currentTextIndex])
+    resultsDisplay(segments[currentTextIndex])
   }, [currentTextIndex, textIndex, frame])
 
   return (

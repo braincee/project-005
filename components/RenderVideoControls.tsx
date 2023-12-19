@@ -100,23 +100,6 @@ export const RenderVideoControls: React.FC<{
       state.status === 'invoking' ||
       state.status === 'error' ? (
         <Stack sx={{ width: '100%' }}>
-          {/* <Accordion>
-            <AccordionSummary>Video URLs</AccordionSummary>
-            <AccordionDetails sx={{ p: 1 }}>
-              {videoUrls?.map((url, index) => (
-                <Stack key={index}>
-                  <Typography>{`Url ${index + 1}`}</Typography>
-
-                  <Input
-                    placeholder='url'
-                    value={url}
-                    onChange={(e) => handleUrlChange(e, index)}
-                    sx={{ mb: 2 }}
-                  />
-                </Stack>
-              ))}
-            </AccordionDetails>
-          </Accordion> */}
           <Accordion>
             <AccordionSummary>Segments</AccordionSummary>
             <AccordionDetails sx={{ p: 1 }}>
@@ -167,17 +150,6 @@ export const RenderVideoControls: React.FC<{
               />
             </AccordionDetails>
           </Accordion>
-          {/* <Accordion>
-            <AccordionSummary>Color</AccordionSummary>
-            <AccordionDetails sx={{ p: 1 }}>
-              <MyColorPicker
-                initialColor={color}
-                description='Text Color'
-                setMyColor={setColor}
-              />
-            </AccordionDetails>
-          </Accordion> */}
-
           <Stack
             sx={{
               display: 'flex',
