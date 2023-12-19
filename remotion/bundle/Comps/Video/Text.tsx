@@ -20,8 +20,8 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({ segments }) => {
   const translateYX = interpolate(
     frame,
     [
-      Math.floor(frame / interval) * interval - 20,
-      Math.floor(frame / interval) * interval + 10,
+      Math.floor(frame / interval) * interval,
+      Math.floor(frame / interval) * interval + 20,
     ],
     [1920, 0],
     {
@@ -68,59 +68,51 @@ export const Text: React.FC<z.infer<typeof myTextSchema>> = ({ segments }) => {
       id='myText'
       style={{
         position: 'absolute',
-        bottom: '30%',
+        bottom: '55%',
         display: 'flex',
         width: '100%',
         justifyContent: 'center',
       }}
     >
-      <TransitionSeries style={{ position: 'relative' }}>
+      <TransitionSeries>
         {segments.map((segment) => {
-          let segmentInterval = 90 + segment.sentences.length * 90
+          let segmentInterval = interval + segment.sentences.length * interval
           return (
-            <TransitionSeries.Sequence
-              style={{ position: 'relative' }}
-              durationInFrames={segmentInterval}
-            >
-              <div style={{ width: '100%' }}>
-                <TransitionSeries style={{ position: 'relative' }}>
-                  <TransitionSeries.Sequence
-                    style={{ position: 'absolute', bottom: '30%' }}
-                    durationInFrames={90}
+            <TransitionSeries.Sequence durationInFrames={segmentInterval}>
+              <TransitionSeries>
+                <TransitionSeries.Sequence durationInFrames={90}>
+                  <p
+                    style={{
+                      padding: '0 10%',
+                      color: '#fff',
+                      fontSize: '70px',
+                      textAlign: 'center',
+                      width: '100%',
+                      margin: 0,
+                      transform: transform,
+                    }}
                   >
+                    {segment.title}
+                  </p>
+                </TransitionSeries.Sequence>
+                {segment.sentences.map((sentence) => (
+                  <TransitionSeries.Sequence durationInFrames={90}>
                     <p
                       style={{
-                        padding: '0 10%',
                         color: '#fff',
                         fontSize: '70px',
                         textAlign: 'center',
+                        padding: '0 10%',
                         width: '100%',
                         margin: 0,
-                        transform: transform,
+                        transform: `translate(${translateX}px)`,
                       }}
                     >
-                      {segment.title}
+                      {sentence}
                     </p>
                   </TransitionSeries.Sequence>
-                  {segment.sentences.map((sentence) => (
-                    <TransitionSeries.Sequence durationInFrames={90}>
-                      <p
-                        style={{
-                          color: '#fff',
-                          fontSize: '70px',
-                          textAlign: 'center',
-                          padding: '0 10%',
-                          width: '100%',
-                          margin: 0,
-                          transform: `translate(${translateX}px)`,
-                        }}
-                      >
-                        {sentence}
-                      </p>
-                    </TransitionSeries.Sequence>
-                  ))}
-                </TransitionSeries>
-              </div>
+                ))}
+              </TransitionSeries>
             </TransitionSeries.Sequence>
           )
         })}

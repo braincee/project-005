@@ -12,6 +12,9 @@ const urlSchema = z.object({
     })
   ),
 })
+
+const interval = 90
+
 export const VideoSequence: React.FC<z.infer<typeof urlSchema>> = ({
   segments,
 }) => {
@@ -21,7 +24,7 @@ export const VideoSequence: React.FC<z.infer<typeof urlSchema>> = ({
     <div style={{ position: 'relative', bottom: '10%' }}>
       <TransitionSeries>
         {segments.map((segment: any, index: number) => {
-          let segmentInterval = 90 + segment.sentences.length * 90
+          let segmentInterval = interval + segment.sentences.length * interval
           return (
             <>
               <TransitionSeries.Sequence
