@@ -58,7 +58,8 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
         'The value of SFM plunged by 42% trading close to zero to the dismay of holders',
       ],
       videoUrl:
-        'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
+        // 'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
+        'https://www.shutterstock.com/shutterstock/videos/1097895557/preview/stock-footage--seconds-timer-animation-with-split-elapsed-circle-effect-in-green-screen-background.webm',
     },
     {
       title: 'This Protocol Pays You to Test Its Network',
@@ -147,7 +148,15 @@ export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
   titleColor: '#000',
 }
 
-export const DURATION_IN_FRAMES = 810
+const duration = () => {
+  let value = 0
+  defaultVideoCompProps.segments.forEach((segment: any) => {
+    value += 90 + 90 * segment.sentences.length
+  })
+  return value
+}
+
+export const DURATION_IN_FRAMES = duration()
 export const WIDTH = 1080
 export const HEIGHT = 1920
 export const VIDEO_FPS = 30
