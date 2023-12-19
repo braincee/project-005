@@ -56,7 +56,7 @@ export const defaultVideoCompProps: z.infer<typeof videoCompSchema> = {
         'Namada has allocated 3% of its token supply to the testnet participants',
       ],
       videoUrl:
-        'https://static.videezy.com/system/resources/previews/000/048/258/original/383A9660-20200401_Stock_market_screen.mp4',
+        'https://static.videezy.com/system/resources/previews/000/045/858/original/stock-futuristic.mp4',
     },
   ],
   audioUrl:
