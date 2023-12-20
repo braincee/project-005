@@ -8,6 +8,7 @@ import '../index.css'
 export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
   titleTexts,
   titleColor,
+  imageUrl,
 }) => {
   const { width, height } = useVideoConfig()
 
@@ -22,10 +23,9 @@ export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
         width: width,
         height: height,
         background: 'yellow',
-        // fontFamily: font.family,
       }}
     >
-      <TopImage />
+      <TopImage imageUrl={imageUrl} />
       <Text titleTexts={titleTexts} titleColor={titleColor} />
     </div>
   )

@@ -93,11 +93,14 @@ export const defaultStoryCompProps: z.infer<typeof storyCompSchema> = {
 export const imageCompSchema = z.object({
   titleTexts: z.string(),
   titleColor: zColor(),
+  imageUrl: z.string(),
 })
 
 export const defaultImageCompProps: z.infer<typeof imageCompSchema> = {
   titleTexts: `Coinbase beats all expectations with $674M in revenue for Q3 2023`,
   titleColor: '#000',
+  imageUrl:
+    'https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w1200/2023/10/free-images.jpg',
 }
 
 const duration = () => {
