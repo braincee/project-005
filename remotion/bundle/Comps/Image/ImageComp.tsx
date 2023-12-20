@@ -1,15 +1,9 @@
-import {
-  useVideoConfig,
-  delayRender,
-  staticFile,
-  continueRender,
-} from 'remotion'
+import { useVideoConfig } from 'remotion'
 import { z } from 'zod'
 import { Text } from './Text'
 import { TopImage } from './TopImage'
 import { imageCompSchema } from '@/libs/types/constants'
-import { Stack } from '@mui/joy'
-import font from '../loadFont'
+import '../index.css'
 
 export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
   titleTexts,
@@ -18,8 +12,9 @@ export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
   const { width, height } = useVideoConfig()
 
   return (
-    <Stack
-      sx={{
+    <div
+      className='main'
+      style={{
         gap: '40px',
         position: 'absolute',
         top: 0,
@@ -27,11 +22,11 @@ export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
         width: width,
         height: height,
         background: 'yellow',
-        fontFamily: font.family,
+        // fontFamily: font.family,
       }}
     >
       <TopImage />
       <Text titleTexts={titleTexts} titleColor={titleColor} />
-    </Stack>
+    </div>
   )
 }

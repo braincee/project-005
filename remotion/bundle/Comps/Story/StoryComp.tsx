@@ -1,16 +1,9 @@
-import {
-  AbsoluteFill,
-  staticFile,
-  useVideoConfig,
-  Img,
-  continueRender,
-  delayRender,
-} from 'remotion'
+import { AbsoluteFill, staticFile, useVideoConfig, Img } from 'remotion'
 import { CoinRow } from './CoinRow'
 import { coinRowSchema, storyCompSchema } from '@/libs/types/constants'
 import { z } from 'zod'
 import { Heading } from './Heading'
-import font from '../loadFont'
+import '../index.css'
 
 export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
   coinRows,
@@ -19,6 +12,7 @@ export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
 
   return (
     <AbsoluteFill
+      className='main'
       style={{
         width: width,
         height: height,
@@ -27,7 +21,6 @@ export const StoryComp: React.FC<z.infer<typeof storyCompSchema>> = ({
         flexDirection: 'column',
         color: '#fff',
         paddingTop: '120px',
-        fontFamily: font.family,
       }}
     >
       <div style={{ textAlign: 'center' }}>
