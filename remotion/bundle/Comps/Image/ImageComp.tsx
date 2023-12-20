@@ -9,20 +9,7 @@ import { Text } from './Text'
 import { TopImage } from './TopImage'
 import { imageCompSchema } from '@/libs/types/constants'
 import { Stack } from '@mui/joy'
-
-const waitForFont = delayRender()
-const font = new FontFace(
-  'Handel Gothic',
-  `url('${staticFile('Handel Gothic D Regular.ttf')}') format('truetype')`
-)
-
-font
-  .load()
-  .then(() => {
-    document.fonts.add(font)
-    continueRender(waitForFont)
-  })
-  .catch((err) => console.log('Error loading font', err))
+import font from '../loadFont'
 
 export const ImageComp: React.FC<z.infer<typeof imageCompSchema>> = ({
   titleTexts,
