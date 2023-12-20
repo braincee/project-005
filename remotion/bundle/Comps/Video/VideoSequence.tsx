@@ -30,17 +30,19 @@ export const VideoSequence: React.FC<z.infer<typeof urlSchema>> = ({
               durationInFrames={segmentInterval}
               key={index}
             >
-              <TransitionSeries.Sequence durationInFrames={segmentInterval}>
-                <Video
-                  loop
-                  src={segment.videoUrl}
-                  style={{ height: height / 2, width: width }}
+              <TransitionSeries>
+                <TransitionSeries.Sequence durationInFrames={segmentInterval}>
+                  <Video
+                    loop
+                    src={segment.videoUrl}
+                    style={{ height: height / 2, width: width }}
+                  />
+                </TransitionSeries.Sequence>
+                <TransitionSeries.Transition
+                  presentation={slide()}
+                  timing={linearTiming({ durationInFrames: 10 })}
                 />
-              </TransitionSeries.Sequence>
-              <TransitionSeries.Transition
-                presentation={slide()}
-                timing={linearTiming({ durationInFrames: 10 })}
-              />
+              </TransitionSeries>
             </TransitionSeries.Sequence>
           )
         })}
