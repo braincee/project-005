@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev && node remotion/render/server.mjs",
+        "dev": "next dev & node remotion/render/server.mjs",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",

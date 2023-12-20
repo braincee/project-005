@@ -26,11 +26,11 @@ export const VideoSequence: React.FC<z.infer<typeof urlSchema>> = ({
         {segments.map((segment: any, index: number) => {
           let segmentInterval = interval + segment.sentences.length * interval
           return (
-            <>
-              <TransitionSeries.Sequence
-                key={index}
-                durationInFrames={segmentInterval}
-              >
+            <TransitionSeries.Sequence
+              durationInFrames={segmentInterval}
+              key={index}
+            >
+              <TransitionSeries.Sequence durationInFrames={segmentInterval}>
                 <Video
                   loop
                   src={segment.videoUrl}
@@ -41,7 +41,7 @@ export const VideoSequence: React.FC<z.infer<typeof urlSchema>> = ({
                 presentation={slide()}
                 timing={linearTiming({ durationInFrames: 10 })}
               />
-            </>
+            </TransitionSeries.Sequence>
           )
         })}
       </TransitionSeries>
