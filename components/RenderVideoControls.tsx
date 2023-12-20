@@ -22,16 +22,7 @@ export const RenderVideoControls: React.FC<{
   audioUrl: string
   setAudioUrl: React.Dispatch<React.SetStateAction<string>>
   inputProps: z.infer<typeof videoCompSchema>
-}> = ({
-  segments,
-  setSegments,
-
-  audioUrl,
-
-  setAudioUrl,
-
-  inputProps,
-}) => {
+}> = ({ segments, setSegments, audioUrl, setAudioUrl, inputProps }) => {
   const { renderMedia, state } = useVideoRendering(VIDEO_COMP_NAME, inputProps)
 
   const handleChange = (
